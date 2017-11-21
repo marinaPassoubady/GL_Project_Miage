@@ -1,4 +1,3 @@
-# GL_Project_Miage
+# Masterblog
 ## Un premier test pour que tout le monde clone le repo svp
 Ce repository contiendra nos sources du projet génie logiciel
-bettina
