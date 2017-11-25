@@ -1,4 +1,4 @@
-# Le cercle des scribouillars
+# Le cercle des scribouillards
 ## Un premier test pour que tout le monde clone le repo svp
 Ce repository contiendra nos sources du projet génie logiciel
 
