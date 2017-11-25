@@ -3,7 +3,7 @@
 
 ## Sommaire 
 * Cadrage et périmètre 
-    * Le but du site
+    * Présentation du site
 * Fonctionnalités du site 
     * Inscription
     * Connexion
