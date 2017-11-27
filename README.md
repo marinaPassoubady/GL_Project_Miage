@@ -1,4 +1,5 @@
-# GL_Project_Miage
+# Le cercle des scribouillards
 ## Un premier test pour que tout le monde clone le repo svp
 Ce repository contiendra nos sources du projet génie logiciel
-bettina
+
+lien trello : https://trello.com/b/EGMybPUS/le-cercle-des-scribouillards
