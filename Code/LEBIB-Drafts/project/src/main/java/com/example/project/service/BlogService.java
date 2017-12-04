@@ -3,7 +3,9 @@ package com.example.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.project.entities.Theme;
 import com.example.project.entities.User;
+import com.example.project.repositories.ThemeRepository;
 import com.example.project.repositories.UserRepository;
 
 @Service
@@ -11,6 +13,9 @@ public class BlogService implements BlogServiceInterface {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	ThemeRepository themeRepository;
 	
 	@Override
 	public void addUser(User user) {
@@ -20,6 +25,12 @@ public class BlogService implements BlogServiceInterface {
 	@Override
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
+	}
+
+	@Override
+	public void addTheme(Theme theme) {
+		themeRepository.save(theme);
+		
 	}
 
 }

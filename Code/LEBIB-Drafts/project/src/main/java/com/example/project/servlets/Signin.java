@@ -63,7 +63,8 @@ public class Signin {
 			model.addAttribute("hasError", true);
 			return "themes";
 		}
-		return "ok";
+		blogService.addTheme(theme);
+		return "themes";
 	}
 	
 	@GetMapping(value="/themes")
