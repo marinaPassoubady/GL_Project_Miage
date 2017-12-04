@@ -17,4 +17,9 @@ public class BlogService implements BlogServiceInterface {
 		userRepository.save(user);
 	}
 
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
 }

@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.repositories.UserRepository;
+import com.example.project.service.BlogServiceInterface;
 import com.example.project.validators.UserSignInValidator;
 import com.example.project.validators.UserSignUpValidator;
 
 @Controller
 public class Signin {
 	
-
-	@Autowired 
-	private UserRepository userRepository;
+	
+	@Autowired
+	BlogServiceInterface blogService;
 	
 	@Autowired
 	private UserSignInValidator userSignInValidator;
@@ -44,14 +45,15 @@ public class Signin {
 	public String signUpProceed(@ModelAttribute User user, BindingResult result) {
 		userSignUpValidator.validate(user, result);
 		if(result.hasErrors()) return "connexion";
-		return "redirect:dashbord";
+		return "redirect:themes";
 	}
 	
 	@PostMapping(value="/signin")
 	public String signInProceed(@Valid User user, BindingResult result) {
 		userSignInValidator.validate(user, result);
 		if(result.hasErrors()) return "inscription";
-		userRepository.save(user);
+		//userRepository.save(user);
+		blogService.addUser(user);
 		return "redirect:themes";
 		
 	}

@@ -7,13 +7,15 @@ import org.springframework.validation.Validator;
 
 import com.example.project.entities.User;
 import com.example.project.repositories.UserRepository;
+import com.example.project.service.BlogServiceInterface;
 
 
 @Component
 public class UserSignUpValidator implements Validator{
 
-	@Autowired
-	UserRepository userRepository;
+	
+	@Autowired 
+	BlogServiceInterface blogService;
 	
 	@Override
 	public boolean supports(Class<?> obj) {
@@ -30,7 +32,7 @@ public class UserSignUpValidator implements Validator{
 		 if(user.getPassword().equals("")) err.rejectValue("password", "password.inexists","Veuillez renseigner un mot de passe ! ");
 		}
 		else {
-			User tmp = userRepository.findByEmail(user.getEmail());
+			User tmp = blogService.findUserByEmail(user.getEmail());
 			if(tmp == null ) {
 				err.rejectValue("email", "email.inexists","L'email n'existe pas !");
 			}

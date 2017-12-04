@@ -9,12 +9,13 @@ import org.springframework.validation.Validator;
 
 import com.example.project.entities.User;
 import com.example.project.repositories.UserRepository;
+import com.example.project.service.BlogServiceInterface;
 
 @Component
 public class UserSignInValidator implements Validator {
-
-	@Autowired
-	UserRepository userRepository;
+	
+	@Autowired 
+	BlogServiceInterface blogService;
 	
 	@Override
 	public boolean supports(Class<?> c) {
@@ -27,8 +28,8 @@ public class UserSignInValidator implements Validator {
 		if(!user.getPassword().equals(user.getConfirm())) {
 			err.rejectValue("confirm", "password.confirm", "Les mots de passe ne correspondent pas !");
 		}
-		
-		if(userRepository.findByEmail(user.getEmail())!= null) {
+			
+		if(blogService.findUserByEmail(user.getEmail())!= null) {
 			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
 		}
 	}
