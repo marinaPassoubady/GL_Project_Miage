@@ -6,6 +6,10 @@ addons:
     organization: "marinapassoubady-github"
     token:
       secure: "eIg6rioGkBbb8ay2ER3YOoFPt5Ky9kW6AVv7zEHPbcjlnqWk37gQhEeP7+H2dY2vUG5WGHeVAfd3oVBvamLVuDgd27wvcladbjyUQMMyHKrx+Kf4vgOmwo0xAc8I1Mtodd7yT67l+YcKED2Pg+BvFlBmwxMEEUfIqTDCt/5rEtapPjH+Na5ivE2MO5fW53OkHT4FhuMXUoKES+I2eqV3r4ibwjhgw8slH5HEWvVdHTmo7m+gLHvcfr7rUod51iL1Zeww0TzxSIyPTX6jzeekWsDBt/oe32JZAzgOPAVgoCe9bvsKTlfn7As76wxm5fnw4iZs2tIBt76edKPNZJll+/gykGDGdIZ+SeIesMSw/ObRs7xwbFv3VacMrAMg+PCqWl4cBLSLjpAX6Cyyqpl4DyyYLEPHP0PkTYJX6hAWF1KYt9/W5J9LB5MmoP+mCPnH74RUsszzLqnIbxaoJovnK6XmT4McQyk6x7NyxD9xfqUS0uiFnCx3Df7KaWh2IoU9yvpy/DPBhUD7QQPVOLy/tjzIZGDia4fNpsbIFbIntvYxqNGQkkbgU//2N4esuR3eSo18gEnZbxhRHuS70NuoHjXxAI2iH0ROwvvLygb9gpyZl+UL1YpGGylzCRpQAqWXWix5YTzklSIG371SlWSaQJBrxOlA6JFnQEePNl1OSA0="
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
 script: |
   mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 notifications:
