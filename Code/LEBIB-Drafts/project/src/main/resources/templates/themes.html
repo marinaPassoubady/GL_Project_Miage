@@ -93,7 +93,7 @@
     </div>
     <div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
 		<div class="header">
-		 Erreur d'inscription
+		 Erreur d'ajout
 		</div>
 		<ul>
 		  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>

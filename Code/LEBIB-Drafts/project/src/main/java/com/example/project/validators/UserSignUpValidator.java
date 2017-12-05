@@ -28,7 +28,7 @@ public class UserSignUpValidator implements Validator{
 
 		
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
-		 if(user.getEmail().equals("")) err.rejectValue("email", "email.inexists","Veuillez renseigner l'email ! ");
+		 if(user.getEmail().equals("")) err.rejectValue("email", "email.inexists","Veuillez renseigner un email ! ");
 		 if(user.getPassword().equals("")) err.rejectValue("password", "password.inexists","Veuillez renseigner un mot de passe ! ");
 		}
 		else {

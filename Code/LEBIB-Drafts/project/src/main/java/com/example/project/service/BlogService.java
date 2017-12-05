@@ -33,4 +33,9 @@ public class BlogService implements BlogServiceInterface {
 		
 	}
 
+	@Override
+	public User findUserByID(int id) {
+		return userRepository.getOne(id);
+	}
+
 }
