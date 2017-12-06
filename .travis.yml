@@ -3,7 +3,7 @@ sudo: false
 install: true
 addons:
   sonarcloud:
-    organization: "marinapassoubady-github" # the key of the org you chose at step #3
+    organization: "cerclescribmiage" # the key of the org you chose at step #3
     token:
       secure: $SONAR_TOKEN
 jdk:
