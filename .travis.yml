@@ -5,11 +5,13 @@ addons:
   sonarcloud:
     organization: "cerclescribmiage" # the key of the org you chose at step #3
     token:
-      secure: $SONAR_TOKEN
+      secure: "ufY7jS8kAjeU0/RvSZoNBInQQXZUX1NOnugdftNOyq8sFYtPSyuTmTOmFIdgCTd4YmieIjQQCmjifWZvOhBEC22GA+xmCN2puGEzZzyaXHhGaU3J/VGXDGqJPQQAEAhOMlN3TXV9/1UFu1zfK793eUdqwyHZ/tnJpg6XlibdBPoYD3HfNXTLoFKPieiOfnCGyTn4YpzNDOxcakRoxxpYDsFEAC5yFMSb9RFJls4QqBHXPJ/l9ZgDHFUlLUToN1uLqnOM0YZHzDERXiIE/yX0Dk3X1aYYALQB5Ydn0w+RGWkuRJea2+ybdPqP3bJZAxzeKWYgRBXvOiFdgNwZHRm+UX6Qj4KogddQcGY4LEmst4Gt2xqAwCv4dQnKsCvgkvjMgO9H3B9JCjsU45rt2+oVi70IpoHLH1NAhSxSQd06PhdL18YxEJDtmZJ0DnbTX4Nj/hXzpcl6JDIk7YjvOWsGMVUSpFrfS/5nHHORc5bxHsRp0yEjEqLZVVUivU9iYsAVkwrFasACGb1IZq9QwUmiwP08saPB1O8QjuKicecB7513+byWgoBPw+roQowytChWXUDgVHA3+wP7IeYUb+PfHg1al6rZjtf1mxDJ9/cgQCk/aPaJP01kbxGid0t0YtWMu0AYImptWMN/0dmqJri2ZATR3Ypac0Llz2i5AFgabrw="
 jdk:
   - oraclejdk8
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+  -Dsonar.host.url=https://sonarcloud.io
+  -Dsonar.login=$SONAR_TOKEN
   
 cache:
   directories:
