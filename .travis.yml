@@ -1,8 +1,4 @@
 language: java
-addons:
-  sonarqube:
-    token:
-      secure: gLaUU9S4jsG8unqYvvTCv1goMU4D49FhqjnAltd3iHAhnvp6JUexHoGO2xf+9sXFZE+kUp0/7YyRdWikeS+airMQlVbUkrmZCGKl8pUUZ+1ERWlF9spsnxhHWcG+Mwehaw6sqDdOVp2MWumgSFtuT27L1TA3rRVOVWXsiIbIdnKjtgauvURGCxYTMPVyfAsMjlsbp9rufN9NBBYmp4wa6AYx6V3x/jjz7+KxMPXWB4aY0SQPpTex3eTKefna/7TVTpgKuhlRQulzu75y64TK2iAiOy4Fb+D6Wt46cKnuNXM7B7g/AfEKzfSMkW9AVwLvjMhvcf4K6L9vgLr5mjEDL+AOnXrE/Jh3EpF3GgCqRuFSSSkN5cALDuGPfYgWdWGYFTdyAIsWaSYDlH256Om1dmZd+kiCtkzsSy+wTzt1pfKeynSYUJZJck9V1MrZ9DnxhRXrvS7Kk4LQk0/TpmUR2th4JAwkKajc+9JQW/OJOijqwxjiH3K0T8P2j8DaeiHDfkwFwLgf5eAnPO2S7o6m2dsHwoRUSr0rEzTqBuPwBHNjJCE+Mt+/u+aa6psuzUUbMPf5UtasTQrGJTaZdU/0AxtuHQlJ4jqJx4oAfC0/RMN+euMbVJw0RKogi+C1hRTH4DYXO8FZ+1Ejvalj7ELKqQIIUY1NZkIF3BQ+GAowmgc=
 jdk:
 - oraclejdk8
 before_install:
@@ -10,11 +6,8 @@ before_install:
 install:
 - mvn dependency:go-offline
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonar.l3miage.fr -Dsonar.login=${SONAR_TOKEN}
 cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
-env:
-  global:
-    secure: rRBdoJOjNzt17RSJNkCph1go966TxT5q3EX+LtbDMSQDrsNexgTMrV4m8u6ZzCMLezjDMcB9oft9aSToPIYjcQYy8uonXByco6H1r1IbWgUjoG9OfXqPePtLDrJMRlGScUkdHjx9pTmC2lKFZRwDSWq4YqQXUpC0GeI7uwSQ6napuH2On7claZFJexk4Mk0EA9+O900BLhIdL0QqkeJbjyxV9VjVb/S5jY49lWlmFVZxTP0ij/Ezy1Vr6SWrINKbeKljtttMqRVPFwPgUa+birNuXQ92fXUbtjSXGgEGcPoOneEmJcGtqi/iXQ9UDJZP+BT9oABnCZjgu5NSou3LM+/3IJYvxOYlIigmu5oHgPsFKNiwfNPcLJhdxvtc9m58QfprSo8/uC4c6Bmrr+9ulUuDs7NepLHlDgEciWJBf6/aeQfQkGW/brFfWeDZG87RTVoxdl32iLrKBhtqATGadCV/CbrUynCDYosmUuOpwRi/m3WF9lO5OYfbHY/LNl+MmzPpF1rzPIDOWrqQrBoG0dxlET6lNcnbuVXUTMbpFKgKSaXPBZzfyoKot3V4uWOnzA2zsFPopGuSF1+Uff5rRsqz13u0DlNBoWYk34DYFZ4rIXI6xJ6jIIqgH+Emv1rEC8YJROwW0aIPK+8U9cBMwH9MXJHHbspuc8Zu0HlYC4M=
