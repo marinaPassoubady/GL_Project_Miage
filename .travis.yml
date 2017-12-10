@@ -12,6 +12,7 @@ script:
   -Dsonar.host.url=https://sonar.l3miage.fr
   -Dsonar.login=$SONAR_TOKEN
   
+  
 cache:
   directories:
     - '$HOME/.m2/repository'
