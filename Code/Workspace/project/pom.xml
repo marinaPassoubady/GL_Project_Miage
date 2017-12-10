@@ -15,13 +15,19 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.9.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<sonar.host.url>https://sonar.l3miage.fr</sonar.host.url>
+		<sonar.jdbc.url>jdbc:mysql://localhost:3306/project</sonar.jdbc.url>
+		<sonar.jdbc.username>root</sonar.jdbc.username>
+		<sonar.jdbc.password>root</sonar.jdbc.password>
 	</properties>
 
 	<dependencies>
@@ -48,28 +54,32 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-		    <groupId>net.sourceforge.nekohtml</groupId>
-		    <artifactId>nekohtml</artifactId>
-		    <version>1.9.22</version>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.22</version>
 		</dependency>
 	</dependencies>
 
-	<build>
-    <pluginManagement>
-     <plugins>
-     <plugin>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-maven-plugin</artifactId>
-	  </plugin>
-      <plugin>
-       <groupId>org.sonarsource.scanner.maven</groupId>
-       <artifactId>sonar-maven–plugin</artifactId>
-       <version>3.0.1</version>
-      </plugin>
-     </plugins>
-    </pluginManagement>
-		
-	</build>
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-maven-plugin</artifactId>
+						</plugin>
+						<plugin>
+							<groupId>org.sonarsource.scanner.maven</groupId>
+							<artifactId>sonar-maven–plugin</artifactId>
+							<version>3.0.1</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 
+			</build>
+		</profile>
+	</profiles>
 
 </project>
