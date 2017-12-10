@@ -60,9 +60,9 @@
 		</dependency>
 	</dependencies>
 
-	<!-- <profiles>
+	<profiles>
 		<profile>
-			<id>sonar</id>-->
+			<id>sonar</id>
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -79,7 +79,7 @@
 				</pluginManagement>
 
 			</build>
-		<!-- </profile>
+		</profile>
 	</profiles>
-	-->
+	
 </project>
