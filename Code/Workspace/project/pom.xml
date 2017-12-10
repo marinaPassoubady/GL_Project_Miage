@@ -24,10 +24,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<sonar.host.url>https://sonar.l3miage.fr</sonar.host.url>
+		<!-- <sonar.host.url>https://sonar.l3miage.fr</sonar.host.url>
 		<sonar.jdbc.url>jdbc:mysql://localhost:3306/project</sonar.jdbc.url>
 		<sonar.jdbc.username>root</sonar.jdbc.username>
-		<sonar.jdbc.password>root</sonar.jdbc.password>
+		<sonar.jdbc.password>root</sonar.jdbc.password>-->
 	</properties>
 
 	<dependencies>
@@ -60,9 +60,9 @@
 		</dependency>
 	</dependencies>
 
-	<profiles>
+	<!-- <profiles>
 		<profile>
-			<id>sonar</id>
+			<id>sonar</id>-->
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -79,7 +79,7 @@
 				</pluginManagement>
 
 			</build>
-		</profile>
+		<!-- </profile>
 	</profiles>
-
+	-->
 </project>

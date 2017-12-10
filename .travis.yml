@@ -1,7 +1,6 @@
 language: java
 addons:
   sonarqube:
-    organization: cerclescribmiage
     token:
       secure: $SONAR_TOKEN
 jdk:
