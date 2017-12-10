@@ -1,10 +1,8 @@
 language: java
-sudo: false
-install: true
 addons:
   sonarqube:
     token:
-      secure: "EZSJITTsz3OFPd2dY3V5wPz6ojERERvNGNWsIRxjeepA4+uJDOSEKv8bBjEsWdb5hatIvi490Aqor/nBpGvQ63Oz6s1soEF2DOa2lJYZDjf2Z8X+BGqOrO//If8CmNxBn2t99otBjNsGtHlRtu4I6GbbjqeDe1KEMqlJJOcHu7pV/+HSB0EwZSWK6TctQy/03K9UhvY2hMRfC1P72sOdObjXHsF/tXRDCafSrlcm73sssgIkXa6+u4PjBz/JYidEUDjWrOsAKpNrtthiJdZ7j53jMSjOowxCCPtUwomLG6zURfoHARNds2AG1stX89vTBKESI/3AI6PAztonMARvhlogSgRt+zJrs5dA/Utq/+qwo3MFRQXjAJ/b27Wy/Q3roWaNcLT7q4qsmFq0zZNTc+hRUrPDNfVtsJcmGB6M+N+rkpk7+XiZ9S/3FripqDyB2/l7i1MuYI7tN0bTAbLdtgNJ5zp5UYsUOItBz8y7/oRI+NfG8SHiSR38E2zb7F7lL4CCsTMCFyJPEnjvfXXTgTEd2x4q0JF1ashWvgRplGGSnZ1FeiQJ9bTsHwqh+Duxcmkog46GCTv79mkx/JkKvxQxo84pUZZWJfuOGdwdF1MclClXM9ct0471kUq916ngykXLYwZDEzS4M6NF5iM2RtqpIu9UInyQipC397tHl1Y="
+      secure: $SONAR_TOKEN
 jdk:
   - oraclejdk8
 script:
