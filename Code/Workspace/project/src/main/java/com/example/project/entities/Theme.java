@@ -1,13 +1,10 @@
 package com.example.project.entities;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Theme {
@@ -15,7 +12,8 @@ public class Theme {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String label, dateCreation;
+	private String label;
+	private String dateCreation;
 	
 	@ManyToOne
 	private User auteur;

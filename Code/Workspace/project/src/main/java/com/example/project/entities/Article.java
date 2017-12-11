@@ -15,7 +15,8 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String titre, description,
+	private String titre;
+	private String description,
 	dateCreation = new Date().toString();
 	
 	@ManyToOne

@@ -14,7 +14,10 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String nom, prenom, email, password;
+	private String nom;
+	private String prenom;
+	private String email;
+	private String password;
 	
 	private String passwordConfirm;
 	String dateInscription =  new Date().toString();
