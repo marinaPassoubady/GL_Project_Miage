@@ -6,7 +6,7 @@ before_install:
 install:
 - mvn dependency:go-offline
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonar.l3miage.fr -Dsonar.login=${SONAR_TOKEN}  -Dsonar.password=admin
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonar.l3miage.fr -Dsonar.login=${SONAR_TOKEN}
 cache:
   directories:
   - "$HOME/.m2/repository"
