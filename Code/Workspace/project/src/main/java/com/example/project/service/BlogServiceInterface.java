@@ -16,5 +16,7 @@ public interface BlogServiceInterface {
 	Theme findThemeById(int id);
 	void addArticle(Article article);
 	void evaluerArticle(int id, int val);
+	void supprimerArticle(int id);
+	void supprimerTheme(int id);
 	
 }

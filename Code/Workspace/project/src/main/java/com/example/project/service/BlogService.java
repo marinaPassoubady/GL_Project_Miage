@@ -74,5 +74,17 @@ public class BlogService implements BlogServiceInterface {
 		articleRepository.save(article);
 	}
 
+	@Override
+	public void supprimerArticle(int id) {
+		articleRepository.delete(id);
+		
+	}
+
+	@Override
+	public void supprimerTheme(int id) {
+		themeRepository.delete(id);
+		
+	}
+
 
 }

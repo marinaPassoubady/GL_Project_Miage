@@ -104,9 +104,16 @@ public class Signin {
 		blogService.addArticle(article);
 		return "redirect:theme?id="+id;
 	}
+	
 	@GetMapping(value="evalArticle")
 	public String evaluerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId, @RequestParam int val) {
 		blogService.evaluerArticle(aId, val);
+		return "redirect:theme?id="+tId;
+	}
+	
+	@GetMapping(value="deleteArticle")
+	public String supprimerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId) {
+		blogService.supprimerArticle(aId);
 		return "redirect:theme?id="+tId;
 	}
 }
