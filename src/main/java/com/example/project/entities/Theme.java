@@ -1,10 +1,18 @@
 package com.example.project.entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Theme {
@@ -12,14 +20,23 @@ public class Theme {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String label;
-	private String dateCreation;
+	
+	@NotEmpty(message="Veuillez renseigner un titre !")
+	private String titre;
+	
+	@NotEmpty(message="Veuillez renseigner une description !")
+	private String description;
+	
+	@NotEmpty(message="Veuillez renseigner une catégorie !")
+	private String categorie;
+	private String dateCreation = new Date().toString();
+	
+	@OneToMany(mappedBy="theme")
+	private List<Article> articles = new ArrayList<>();
 	
 	@ManyToOne
 	private User auteur;
-	
-	@ManyToOne
-	private Categorie categorie;
+
 	
 	public int getId() {
 		return id;
@@ -27,11 +44,11 @@ public class Theme {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLabel() {
-		return label;
+	public String getTitre() {
+		return titre;
 	}
-	public void setLabel(String label) {
-		this.label = label;
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
 	public String getDateCreation() {
 		return dateCreation;
@@ -47,12 +64,27 @@ public class Theme {
 		this.auteur = auteur;
 	}
 	
-	public Categorie getCategorie() {
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getCategorie() {
 		return categorie;
 	}
 	
-	public void setCategorie(Categorie categorie) {
+	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
 
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+	public List<Article> getArticles() {
+		return articles;
+	}
 }
