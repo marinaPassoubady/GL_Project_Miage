@@ -21,7 +21,7 @@
       max-width: 450px;
     }
   </style>
-  <script>
+ <!--  <script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -55,7 +55,7 @@
       ;
     })
   ;
-  </script>
+  </script> -->
 </head>
 
 
@@ -81,21 +81,22 @@
             <input type="password" name="password" placeholder="Password" th:field="*{password}" >
           </div>
         </div>
-        <div class="ui fluid large teal submit button">Connexion</div>
-
+        <button type="submit" class="ui fluid large teal button">Connexion</button>
+		 <div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
+		  <div class="header">
+		   Erreur de connexion
+		  </div>
+			<ul>
+			  <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+			  <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
+			</ul>
+		 </div>
      </div>
     </form>
 
     <div class="ui message">
-      Pas de compte ? <a href="./Inscription">Créer un compte</a>
+      Pas de compte ? <a href="./signin">Créer un compte</a>
     </div>
-
-  <div class="ui negative message">
-  <div class="header">
-   Erreur de connexion
-  </div>
-  <p>Erreur de connexion</p>
-  </div>
   </div>
 </div>  
 

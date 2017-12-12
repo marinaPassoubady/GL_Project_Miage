@@ -6,17 +6,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
+@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String nom, prenom, email, password;
 	
-	private String passwordConfirm;
+	
+	@NotEmpty(message="Veuillez renseigner un nom !")
+	private String nom;
+	
+	@NotEmpty(message="Veuillez renseigner un prénom !")
+	private String prenom;
+	
+	@NotEmpty(message="Veuillez renseigner un email !")
+	@Email(message="Veuillez renseigner un email valide !")
+	private String email;
+	
+	@NotEmpty(message="Veuillez renseigner un mot de passe !")
+	private String password;
+	
+	@Transient
+	@NotEmpty(message="Veuillez renseigner à nouveau le mot de passe !")
+	private String confirm;
 	String dateInscription =  new Date().toString();
 
 	public int getId() {
@@ -57,12 +80,12 @@ public class User {
 		this.password = password;
 	}
 	
-	public String getPasswordConfirm() {
-		return passwordConfirm;
+	public String getConfirm() {
+		return confirm;
 	}
 	
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
 	}
 	public String getDateInscription() {
 		return dateInscription;

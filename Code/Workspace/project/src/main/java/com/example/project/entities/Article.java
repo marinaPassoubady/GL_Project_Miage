@@ -3,10 +3,14 @@ package com.example.project.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -15,14 +19,22 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String titre, description,
-	dateCreation = new Date().toString();
+	
+	@NotEmpty(message="Veuillez renseigner un titre !")
+	private String titre;
+	
+	@NotEmpty(message="Veuillez renseigner une description !")
+	private String description;
+	
+	private String dateCreation = new Date().toString();
 	
 	@ManyToOne
 	private User auteur;
 
 	@ManyToOne
 	private Theme theme;
+	
+	private int votes = 0;
 	
 	public int getId() {
 		return id;
@@ -62,5 +74,15 @@ public class Article {
 	
 	public void setTheme(Theme theme) {
 		this.theme = theme;
+	}
+	
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
+	public int getVotes() {
+		return votes;
+	}
+	public void incVotes(int offset) {
+		votes += offset;
 	}
 }

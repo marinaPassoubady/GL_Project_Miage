@@ -7,20 +7,20 @@
   <title>Inscription</title>
   <link rel="stylesheet" type="text/css" href="assets/semantic.css" />
   <script type="text/javascript" src="assets/jquery.js"></script>
-  <script type="text/javascript" src="assets/semantic.js"></script> 
+  <script type="text/javascript" src="assets/semantic.js"></script>
 
   <style type="text/css">
     body {
       background-color: #DADADA;
     }
     body > .grid {
-      height: 100%;
+      min-height: 100%;
     }
     .column {
       max-width: 450px;
     }
   </style>
-  <script>
+ <!--  <script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -69,8 +69,8 @@
                 }
               ]
             },
-            password_confirm : {
-              identifier  : 'password_confirm',
+            confirm : {
+              identifier  : 'confirm',
               rules: [
                 {
                   type   : 'empty',
@@ -87,7 +87,7 @@
       ;
     })
   ;
-  </script>
+  </script> -->
 </head>
 
 
@@ -101,11 +101,14 @@
     </h2>
     <form class="ui large form" method="POST" th:action="@{/signin}" th:object="${user}" action="#">
       <div class="ui stacked segment">
-        <div class="field">
+         <div class="field">
 		  <div class="ui left icon input">
             <i class="user icon"></i>
             <input type="text" name="prenom" placeholder="Prénom" th:field="*{prenom}" />
           </div>
+<!--             <div th:if="${#fields.hasErrors('prenom')}"> 
+         		<p th:each="err : ${#fields.errors('prenom')}" th:text="${err}"></p>
+         	</div> -->
 		 </div>
 		  <div class="field">
 		  <div class="ui left icon input">
@@ -128,28 +131,25 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password_confirm" placeholder="Confirmer mot de passe" th:field="*{passwordConfirm}" />
+            <input type="password" name="confirm" placeholder="Confirmer mot de passe" th:field="*{confirm}" />
           </div>
         </div>
-        <div class="ui fluid large teal submit button">S'inscrire</div>
+        <button type="submit" class="ui fluid large teal button">S'incrire</button>
       </div>
 
-      
-
+	<div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
+		<div class="header">
+		 Erreur d'inscription
+		</div>
+		<ul>
+		  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+		</ul>
+	</div>      
     </form>
 
     <div class="ui message">
-      Compte déjà créé ? <a href="./Connexion">Se connecter</a>
+      Compte déjà créé ? <a href="./">Se connecter</a>
     </div>
-
-
-<div class="ui negative message">
-<div class="header">
- Erreur de connexion
-</div>
-<p>Erreur de connexion</p>
-</div>
-
   </div>
 </div>
 
