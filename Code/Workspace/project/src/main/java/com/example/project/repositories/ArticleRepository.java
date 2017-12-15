@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.project.entities.Article;
 
-@Repository("articleRepository")
+@Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	
 }

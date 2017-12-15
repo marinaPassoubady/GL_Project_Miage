@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.example.project.entities.User;
-import com.example.project.repositories.UserRepository;
 import com.example.project.service.BlogServiceInterface;
 
 
