@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project.entities.User;
-import com.example.project.service.BlogServiceInterface;
+import com.example.project.service.BlogService;
 
 @RestController
 @RequestMapping("/rest")
 public class BlogAPI {
 	
 	@Autowired
-	BlogServiceInterface blogService;
+	BlogService blogService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("id") int id) {

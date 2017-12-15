@@ -90,6 +90,7 @@
       <td th:text="${t.getTitre()}">Save the Elephants</td>
       <td th:text="${t.getDateCreation()}">September 14, 2013</td>
       <td class="right aligned">
+      		  <a href="#" class="ui negative basic button">Supprimer</a>
       	      <a th:href="@{'/theme?id='+${t.getId()}}" class="ui button">Détails</a>
       </td>
     </tr>

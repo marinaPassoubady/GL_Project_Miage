@@ -6,14 +6,14 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.example.project.entities.User;
-import com.example.project.service.BlogServiceInterface;
+import com.example.project.service.BlogService;
 
 
 @Component
 public class UserSignInValidator implements Validator {
 	
 	@Autowired 
-	BlogServiceInterface blogService;
+	BlogService blogService;
 	
 	@Override
 	public boolean supports(Class<?> c) {

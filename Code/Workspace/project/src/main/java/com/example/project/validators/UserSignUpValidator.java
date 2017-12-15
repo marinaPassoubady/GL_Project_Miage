@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.example.project.entities.User;
-import com.example.project.service.BlogServiceInterface;
+import com.example.project.service.BlogServiceImpl;
 
 
 @Component
@@ -14,7 +14,7 @@ public class UserSignUpValidator implements Validator{
 
 	
 	@Autowired 
-	BlogServiceInterface blogService;
+	BlogServiceImpl blogService;
 	
 	@Override
 	public boolean supports(Class<?> obj) {
@@ -33,7 +33,7 @@ public class UserSignUpValidator implements Validator{
 		else {
 			User tmp = blogService.findUserByEmail(user.getEmail());
 			if(tmp == null ) {
-				err.rejectValue("email", "email.inexists","L'email n'existe pas.");
+				err.rejectValue("email", "email.inexists","Ce mail n'existe pas.");
 			}
 			else {
 				if(!tmp.getPassword().equals(user.getPassword())) {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
-import com.example.project.service.BlogServiceInterface;
+import com.example.project.service.BlogService;
 import com.example.project.validators.UserSignInValidator;
 import com.example.project.validators.UserSignUpValidator;
 
@@ -25,7 +25,7 @@ public class Signin {
 	
 	
 	@Autowired
-	BlogServiceInterface blogService;
+	BlogService blogService;
 	
 	@Autowired
 	private UserSignInValidator userSignInValidator;
