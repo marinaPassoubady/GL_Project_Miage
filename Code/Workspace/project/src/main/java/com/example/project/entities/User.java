@@ -23,21 +23,21 @@ public class User {
 	private int id;
 	
 	
-	@NotEmpty(message="Veuillez renseigner un nom !")
+	@NotEmpty(message="Le nom est obligatoire.")
 	private String nom;
 	
-	@NotEmpty(message="Veuillez renseigner un prénom !")
+	@NotEmpty(message="Le prénom est obligatoire.")
 	private String prenom;
 	
-	@NotEmpty(message="Veuillez renseigner un email !")
-	@Email(message="Veuillez renseigner un email valide !")
+	@NotEmpty(message="Le mail doit être renseigné.")
+	@Email(message="Votre email n'est pas valide.")
 	private String email;
 	
-	@NotEmpty(message="Veuillez renseigner un mot de passe !")
+	@NotEmpty(message="Le mot de passe est obligatoire.")
 	private String password;
 	
 	@Transient
-	@NotEmpty(message="Veuillez renseigner à nouveau le mot de passe !")
+	@NotEmpty(message="La confirmation du mot de passe doit être renseigné.")
 	private String confirm;
 	String dateInscription =  new Date().toString();
 

@@ -27,17 +27,17 @@ public class UserSignUpValidator implements Validator{
 
 		
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
-		 if(user.getEmail().equals("")) err.rejectValue("email", "email.inexists","Veuillez renseigner un email ! ");
-		 if(user.getPassword().equals("")) err.rejectValue("password", "password.inexists","Veuillez renseigner un mot de passe ! ");
+		 if(user.getEmail().equals("")) err.rejectValue("email", "email.inexists","Le mail doit être renseigné.");
+		 if(user.getPassword().equals("")) err.rejectValue("password", "password.inexists","Le mot de passe est obligatoire.");
 		}
 		else {
 			User tmp = blogService.findUserByEmail(user.getEmail());
 			if(tmp == null ) {
-				err.rejectValue("email", "email.inexists","L'email n'existe pas !");
+				err.rejectValue("email", "email.inexists","L'email n'existe pas.");
 			}
 			else {
 				if(!tmp.getPassword().equals(user.getPassword())) {
-					err.rejectValue("password", "password.incorrect","Mot de passe incorrect !");
+					err.rejectValue("password", "password.incorrect","Le mot de passe n'est pas valide.");
 				}
 			}
 	
