@@ -16,13 +16,13 @@ import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
+import com.example.project.tools.Constantes;
 import com.example.project.validators.UserSignInValidator;
 import com.example.project.validators.UserSignUpValidator;
 
 @Controller
 @SessionAttributes("theme")
 public class Signin {
-	
 	
 	@Autowired
 	BlogService blogService;
@@ -36,78 +36,79 @@ public class Signin {
 	@GetMapping("/signin")
 	public String signin(Model model) {
 		model.addAttribute("user", new User());
-		return "inscription";
+		return Constantes.inscription;
 	}
 	
 	@GetMapping("/")
 	public String signup(Model model) {
 		model.addAttribute("user", new User());
-		return "connexion";
+		
+		return Constantes.connexion;
 	}
 	@PostMapping("/")
 	public String signUpProceed(@ModelAttribute User user, BindingResult result/*, HttpSession session */) {
 		userSignUpValidator.validate(user, result);
-		if(result.hasErrors()) return "connexion";
+		if(result.hasErrors()) return Constantes.connexion;
 	//	session.setAttribute("userDetails", new User());
-		return "redirect:themes";
+		return Constantes.redirect_themes;
 	}
 	
 	@PostMapping(value="/signin")
 	public String signInProceed(@Valid User user, BindingResult result) {
 		userSignInValidator.validate(user, result);
-		if(result.hasErrors()) return "inscription";
+		if(result.hasErrors()) return Constantes.inscription;
 		blogService.addUser(user);
-		return "redirect:themes";
+		return Constantes.redirect_themes;
 		
 	}
 	@PostMapping(value="/themes")
 	public String ajouterTheme(@Valid Theme theme, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("hasError", true);
-			return "themes";
+			return Constantes.themes;
 		}
 		blogService.addTheme(theme);
-		return "redirect:themes";
+		return Constantes.redirect_themes;
 	}
 	
 	@GetMapping(value="/themes")
 	public String dashbord(Model model) {
-		model.addAttribute("themes", blogService.getThemes());
-		model.addAttribute("theme", new Theme());
-		return "themes";
+		model.addAttribute(Constantes.themes, blogService.getThemes());
+		model.addAttribute(Constantes.theme, new Theme());
+		return Constantes.themes;
 	}
 	
 	@ModelAttribute
 	@GetMapping(value="theme")
 	public String consulterTheme(@RequestParam("id") int id,  Model model) {
 		Theme theme = blogService.findThemeById(id);
-		model.addAttribute("theme", theme);
+		model.addAttribute(Constantes.theme, theme);
 		Article article = new Article();
 		model.addAttribute("article", article);
-		return "theme";
+		return Constantes.theme;
 	}
 	
 	@PostMapping(value="theme")
 	public String ajouterArticle(@RequestParam("tId") int id, @ModelAttribute("article") @Valid Article article ,BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("hasError", true);
-			return "theme";
+			return Constantes.theme;
 		}
 		article.setTheme(new Theme());
 		article.getTheme().setId(id);
 		blogService.addArticle(article);
-		return "redirect:theme?id="+id;
+		return Constantes.redirect_theme_id+id;
 	}
 	
 	@GetMapping(value="evalArticle")
 	public String evaluerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId, @RequestParam int val) {
 		blogService.evaluerArticle(aId, val);
-		return "redirect:theme?id="+tId;
+		return Constantes.redirect_theme_id+tId;
 	}
 	
 	@GetMapping(value="deleteArticle")
 	public String supprimerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId) {
 		blogService.supprimerArticle(aId);
-		return "redirect:theme?id="+tId;
+		return Constantes.redirect_theme_id+tId;
 	}
 }
