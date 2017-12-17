@@ -17,17 +17,16 @@
 
 # Cadrage et périmètre
 ## Le but du site
-
+### Le but
+Le site permet à tout amateur de s'initier à la rédaction. Le site impose aux lecteurs et aux écrivains de créer un compte. Au travers de leur compte, ils pourront proposer un thème et rédiger des articles. 
 ### Public ciblé
 Notre site "Le cercle des Scribouillards" reprends grossièrement le principe du site "Reddit". Il vise des jeunes adultes entre 20 ans et 40 ans assez à l'aise avec la technologie. Les amateurs de littérature seront majoritairement les utilisateurs à long terme du site. Les curieux pourront effectuer leur premier pas sans avoir un jugement ni code à respecter : c'est une écriture libre.
 
-### Le but
-Le site permet à tout amateur de s'initier à la rédaction. Le site impose aux lecteurs et aux écrivains de créer un compte. Au travers de leur compte, ils pourront proposer un thème et rédiger des articles. 
 
 ### La particularité du site
-Les articles peuvent être votés. Le thème est cloturé automatiquement au bout d'un certains délais, passé ce délais c'est l'article qui a le plus vote qui l'emporte. 
+Les articles peuvent être votés. Le thème est cloturé automatiquement au bout d'un certain délai, passé ce délai, c'est l'article qui a le plus vote qui l'emporte. 
 
-Ainsi nous laissons libre pouvoir aux utilisateurs du site de produire gérer les thèmes et articles. D'autres fonctionnalités supplémentaires peuvent être ajoutés aux services proposé par le site. 
+Ainsi nous laissons libre pouvoir aux utilisateurs du site de produire gérer les thèmes et articles. D'autres fonctionnalités supplémentaires peuvent être ajoutés aux services proposés par le site. 
 
 ---
 # Fonctionnalités du site 
@@ -58,6 +57,8 @@ En tant que client, je veux pouvoir me connecter pour **créer des articles**.
 En tant que client, je veux pouvoir me connecter pour  **consulter un/des article(s)**.
 
 
+## Voter article
+En tant que client, je veux pouvoir **voter pour un/des article(s)**.
 
 ---
 # Méthodes et contraintes
@@ -96,11 +97,11 @@ Les conditions de satisfaction permettent d'indiquer la réalisation d'une user 
 | ------------- |:----------------:| 
 | Inscription|   1.  **Inscription validée** : son inscription a été validée (login et mot de passe correctes), le client peut se connecter au site. 2.  **Inscription refusée** :le mail indiqué par le client est déjà utilisé, l'utilisateur n'a saisi aucun champs, le login ou mot de passe saisi par l'utilisateur est erroné | 
 | Connexion | 1. **Connexion validée** : (inscription validée) le client a saisi des identifiants correctes, il peut accéder au site 2. **Connexion refusée** : le login et/ou mot de passe indiqués sont erronés, le client ne peut pas accéder au site|
-| Créer thème |  1. **Création de thèmes**: le client peut créer un nouveau thème et  le client ne peut créer plusieurs fois un thème avec le même titre    |
+| Créer thème |  1. **Création de thèmes**: le client peut créer un nouveau thème et  le client ne peut pas créer plusieurs fois un thème avec le même titre    |
 | Consulter thème | 1. **Affichage des thèmes** : le client peut consulter les thèmes | 
 | Créer article |  1. **Création d'articles**: le client peut accéder à un thème puis créer un nouvel article |
 | Consulter article |  1. **Affichage des articles**: le client peut consulter les articles   |
- 
+ | Voter article |  1. **Vote d'articles**: le client peut voter pour un ou plusieurs articles   |
 
 
 ## Storytests
@@ -176,7 +177,7 @@ Alors la liste des thèmes disponibles apparaît
 
 Étant donné l'utilisateur Marina connecté et le thème "Sauver les pingouins" choisi
 Quand Marina veut créer un article
-Alors un formulaire s'affiche et lui permets de le faire
+Alors un formulaire s'affiche et lui permet de le faire
 
 ### Consulter article
 
@@ -185,6 +186,12 @@ Alors un formulaire s'affiche et lui permets de le faire
 Étant donné l'utilisateur Marina connecté et le thème "Sauver les pingouins" choisi
 Quand Marina veut consulter un article
 Alors l'article choisi apparaît
+### Voter article
+* Voter articles
+
+Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d'antartique" 
+Quand Bettina veut voter pour l'article
+Alors un bouton de "like" lui permet de le faire
 
 ## Passage des storytests
 
