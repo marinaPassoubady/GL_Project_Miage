@@ -10,7 +10,7 @@ import com.example.project.service.BlogService;
 
 
 @Component
-public class UserSignInValidator implements Validator {
+public class UserInscriptionValidator implements Validator {
 	
 	@Autowired 
 	BlogService blogService;
@@ -28,7 +28,7 @@ public class UserSignInValidator implements Validator {
 		}
 			
 		if(blogService.findUserByEmail(user.getEmail())!= null) {
-			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
+			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée.");
 		}
 	}
 

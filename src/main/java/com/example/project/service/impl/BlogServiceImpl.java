@@ -1,4 +1,4 @@
-package com.example.project.service;
+package com.example.project.service.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import com.example.project.entities.User;
 import com.example.project.repositories.ArticleRepository;
 import com.example.project.repositories.ThemeRepository;
 import com.example.project.repositories.UserRepository;
+import com.example.project.service.BlogService;
 
 @Service
 public class BlogServiceImpl implements BlogService {
