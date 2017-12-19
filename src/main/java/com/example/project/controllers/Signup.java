@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
 import com.example.project.tools.Constantes;
-import com.example.project.validators.UserConnexionValidator;
 import com.example.project.validators.UserInscriptionValidator;
 
 @Controller
