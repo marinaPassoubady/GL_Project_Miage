@@ -9,21 +9,8 @@ import org.mockito.MockitoAnnotations;
 
 import com.example.project.controllers.Signin;
 
-
-
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SignInTest {
-	
-	/*
-	@Autowired
-	private WebApplicationContext webappContext;
-	
-	private MockMvc mockMvc;
-	
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(webappContext).build();
-	}*/
+
 	
 	@InjectMocks
 	private Signin signincontroller;
