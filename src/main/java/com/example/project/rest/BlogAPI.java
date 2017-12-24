@@ -1,5 +1,7 @@
 package com.example.project.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,14 @@ import com.example.project.service.BlogService;
 @RequestMapping("/rest")
 public class BlogAPI {
 	
+	private static final Logger logger = LoggerFactory.getLogger(BlogAPI.class);	
+	
 	@Autowired
 	BlogService blogService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("id") int id) {
-		System.out.println(blogService.findUserByID(1).getEmail());
+		logger.info(blogService.findUserByID(1).getEmail());
 		return new ResponseEntity<User>(blogService.findUserByID(1), HttpStatus.FOUND);
 	}
 

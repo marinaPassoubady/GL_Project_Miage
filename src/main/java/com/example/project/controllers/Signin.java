@@ -1,6 +1,8 @@
 package com.example.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +14,30 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
-import com.example.project.tools.Constantes;
 import com.example.project.validators.UserConnexionValidator;
 
 @Controller
 @SessionAttributes("theme")
+@PropertySource("constante.properties")
 public class Signin {
+	
+	@Value("${page.connexion}")
+    private String pageConnexion;
+	
+	@Value("${page.accueil}")
+    private String redirectAccueil;
+	
+	@Value("${list.theme}")
+    private String listThemes;
+	
+	@Value("${objet.theme}")
+    private String objTheme;
 	
 	@Autowired
 	BlogService blogService;
+	
+	
+	//private static Environment env;
 	
 	@Autowired
 	private UserConnexionValidator userConnexionValidator;
@@ -29,7 +46,7 @@ public class Signin {
 	public ModelAndView signin() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("user", new User());
-		model.setViewName(Constantes.connexion);
+		model.setViewName(pageConnexion);
 		return model;
 	}
 	
@@ -38,18 +55,18 @@ public class Signin {
 		ModelAndView model = new ModelAndView();
 		userConnexionValidator.validate(user, result);
 		if(result.hasErrors()) {
-			model.setViewName(Constantes.connexion);
+			model.setViewName(pageConnexion);
 			return model;
 		}
-		model.setViewName(Constantes.redirect_themes);
+		model.setViewName(redirectAccueil);
 		return model;
 	}
 	
 	@GetMapping(value="/themes")
 	public ModelAndView afficherAccueil() {
 		ModelAndView model = new ModelAndView();
-		model.addObject(Constantes.themes, blogService.getThemes());
-		model.addObject(Constantes.theme, new Theme());
+		model.addObject(listThemes, blogService.getThemes());
+		model.addObject(objTheme, new Theme());
 		return model;
 	}
 
