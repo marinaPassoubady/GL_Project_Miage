@@ -41,9 +41,6 @@ public class Signin {
 	@Autowired
 	BlogService blogService;
 	
-	
-	//private static Environment env;
-	
 	@Autowired
 	private UserConnexionValidator userConnexionValidator;
 	

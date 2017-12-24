@@ -13,7 +13,6 @@ import com.example.project.controllers.Signin;
 @TestPropertySource("constante.properties")
 public class SignInTest {
 
-	
 	@InjectMocks
 	private Signin signincontroller;
 
@@ -25,11 +24,6 @@ public class SignInTest {
 	@Test
 	public void signinTest() throws Exception {
 		assertNotNull(signincontroller.signin());
-	}
-	
-	@Test
-	public void signinProceedTest() {
-		
 	}
 
 }

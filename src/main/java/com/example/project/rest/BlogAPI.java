@@ -25,7 +25,7 @@ public class BlogAPI {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("id") int id) {
 		logger.info(blogService.findUserByID(1).getEmail());
-		return new ResponseEntity<User>(blogService.findUserByID(1), HttpStatus.FOUND);
+		return new ResponseEntity<>(blogService.findUserByID(1), HttpStatus.FOUND);
 	}
 
 }
