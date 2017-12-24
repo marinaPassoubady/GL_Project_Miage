@@ -1,5 +1,7 @@
 package com.example.project.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
+import com.example.project.rest.BlogAPI;
 import com.example.project.service.BlogService;
 import com.example.project.validators.UserConnexionValidator;
 
@@ -21,8 +24,10 @@ import com.example.project.validators.UserConnexionValidator;
 @PropertySource("constante.properties")
 public class Signin {
 	
+	private static final Logger logger = LoggerFactory.getLogger(BlogAPI.class);
+	
 	@Value("${page.connexion}")
-    private String pageConnexion;
+    public String pageConnexion;
 	
 	@Value("${page.accueil}")
     private String redirectAccueil;
@@ -46,6 +51,7 @@ public class Signin {
 	public ModelAndView signin() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("user", new User());
+		logger.info(pageConnexion);
 		model.setViewName(pageConnexion);
 		return model;
 	}
