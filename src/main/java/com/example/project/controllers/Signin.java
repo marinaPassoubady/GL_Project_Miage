@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
-import com.example.project.rest.BlogAPI;
 import com.example.project.service.BlogService;
 import com.example.project.validators.UserConnexionValidator;
 
@@ -24,7 +23,7 @@ import com.example.project.validators.UserConnexionValidator;
 @PropertySource("constante.properties")
 public class Signin {
 	
-	private static final Logger logger = LoggerFactory.getLogger(BlogAPI.class);
+	private static final Logger logger = LoggerFactory.getLogger(Signin.class);
 	
 	@Value("${page.connexion}")
     public String pageConnexion;
