@@ -56,11 +56,12 @@ public class Signin {
 	public ModelAndView signInProceed(@ModelAttribute User user, BindingResult result/*, HttpSession session */) {
 		ModelAndView model = new ModelAndView();
 		userConnexionValidator.validate(user, result);
+		System.out.println("************");
 		if(result.hasErrors()) {
-			model.setViewName(pageConnexion);
+			model.setViewName("connexion");
 			return model;
 		}
-		model.setViewName(redirectAccueil);
+		model.setViewName("redirect:themes");
 		return model;
 	}
 	

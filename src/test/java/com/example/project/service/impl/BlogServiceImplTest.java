@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +22,6 @@ import com.example.project.service.BlogService;
 @RunWith(SpringRunner.class)
 public class BlogServiceImplTest {
 
-	@TestConfiguration
-	static class EmployeeServiceImplTestContextConfiguration {
-
-		@Bean
-		public BlogService employeeService() {
-			return new BlogServiceImpl();
-		}
-	}
-
-	@Autowired
-	private BlogService blogService;
-
 	@MockBean
 	private ThemeRepository themeRepository;
 	
@@ -44,5 +33,10 @@ public class BlogServiceImplTest {
 		Mockito.when(themeRepository.findByAuteur(alex))
 		.thenReturn(new ArrayList<Theme>());
 	}
-
+	
+	
+	@Test
+	public void test() {
+		
+	}
 }
