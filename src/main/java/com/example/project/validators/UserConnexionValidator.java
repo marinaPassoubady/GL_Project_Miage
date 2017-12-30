@@ -24,8 +24,7 @@ public class UserConnexionValidator implements Validator{
 	@Override
 	public void validate(Object obj, Errors err) {
 		User user = (User) obj;
-
-		
+		System.out.println("************ dsss");
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
 		 if(user.getEmail().equals("")) err.rejectValue("email", "email.inexists","Le mail doit être renseigné.");
 		 if(user.getPassword().equals("")) err.rejectValue("password", "password.inexists","Le mot de passe est obligatoire.");

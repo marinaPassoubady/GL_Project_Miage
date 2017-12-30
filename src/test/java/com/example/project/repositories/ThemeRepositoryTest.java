@@ -25,11 +25,11 @@ public class ThemeRepositoryTest {
     private ThemeRepository tr;
 
 	@Test
-	public void test() {
+	public void findByAuteurTest() {
 		User u = new User();
 		u.setId(1);
 		List<Theme> theme = tr.findByAuteur(u);
-		
+
 		assertEquals("titre",theme.get(0).getTitre());
 	}
 
