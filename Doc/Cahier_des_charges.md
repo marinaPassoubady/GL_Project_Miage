@@ -186,6 +186,7 @@ Alors un formulaire s'affiche et lui permet de le faire
 Étant donné l'utilisateur Marina connecté et le thème "Sauver les pingouins" choisi
 Quand Marina veut consulter un article
 Alors l'article choisi apparaît
+
 ### Voter article
 * Voter articles
 
@@ -194,6 +195,15 @@ Quand Bettina veut voter pour l'article
 Alors un bouton de "like" lui permet de le faire
 
 ## Passage des storytests
+
+### Sécurités
+
+La sécurité des sites Web exige de la vigilance dans tous les aspects de sa conception et de son utilisation. 
+Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
+
+* Connexion	
+
+Lorsqu’un utilisateur saisie un identifiant ou mot de passe erroné, le message d’alerte : « Votre identifiant ou mot de passe est erroné » reste imprécis pour éviter toute usurpation d’identité. 
 
 
 
