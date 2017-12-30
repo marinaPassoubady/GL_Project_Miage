@@ -47,8 +47,8 @@ public class Signin {
 	public ModelAndView signin() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("user", new User());
-		logger.info(pageConnexion);
-		model.setViewName(pageConnexion);
+		logger.info("connexion");
+		model.setViewName("connexion");
 		return model;
 	}
 	
@@ -67,8 +67,10 @@ public class Signin {
 	@GetMapping(value="/themes")
 	public ModelAndView afficherAccueil() {
 		ModelAndView model = new ModelAndView();
-		model.addObject(listThemes, blogService.getThemes());
-		model.addObject(objTheme, new Theme());
+		model.addObject("themes", blogService.getThemes());
+		logger.info("test *************************** "+blogService.getThemes().size());
+		model.addObject("theme", new Theme());
+		model.setViewName("themes");
 		return model;
 	}
 
