@@ -206,4 +206,9 @@ Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un 
 Lorsqu’un utilisateur saisie un identifiant ou mot de passe erroné, le message d’alerte : « Votre identifiant ou mot de passe est erroné » reste imprécis pour éviter toute usurpation d’identité. 
 
 
+### Tests Fonctionnel 
+
+Les tests fonctionnels sont un service d’assurance qualité qui consiste à s’assurer qu’un système (ou un de ses composants) fonctionne adéquatement. 
+
+Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
 
