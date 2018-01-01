@@ -212,3 +212,7 @@ Les tests fonctionnels sont un service d’assurance qualité qui consiste à s�
 
 Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
 
+N°		Action à réaliser                         Résultat attendu                             Résultat obtenu 
+1		S’inscrire et valider l’inscription       Redirection vers la page des thèmes                OK
+2		 				   
+
