@@ -1,5 +1,6 @@
 package com.example.project.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,9 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,23 +26,23 @@ public class User {
 	private int id;
 	
 	
-	@NotEmpty(message="Le nom est obligatoire.")
+	@NotEmpty(message="Veuillez renseigner un nom !")
 	private String nom;
 	
-	@NotEmpty(message="Le prénom est obligatoire.")
+	@NotEmpty(message="Veuillez renseigner un prénom !")
 	private String prenom;
 	
-	@NotEmpty(message="Le mail doit être renseigné.")
-	@Email(message="Votre email n'est pas valide.")
+	@NotEmpty(message="Veuillez renseigner un email !")
+	@Email(message="Veuillez renseigner un email valide !")
 	private String email;
 	
-	@NotEmpty(message="Le mot de passe est obligatoire.")
+	@NotEmpty(message="Veuillez renseigner un mot de passe !")
 	private String password;
 	
 	@Transient
-	@NotEmpty(message="La confirmation du mot de passe doit être renseigné.")
+	@NotEmpty(message="Veuillez renseigner à nouveau le mot de passe !")
 	private String confirm;
-	String dateInscription =  new Date().toString();
+	String dateInscription =  new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 
 	public int getId() {
 		return id;
@@ -92,4 +95,10 @@ public class User {
 	public void setDateInscription(String dateInscription) {
 		this.dateInscription = dateInscription;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return ((obj instanceof User) && ((User)obj).id == id); 
+	}
+	
 }

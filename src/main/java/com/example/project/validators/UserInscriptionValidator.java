@@ -28,8 +28,7 @@ public class UserInscriptionValidator implements Validator {
 		}
 			
 		if(blogService.findUserByEmail(user.getEmail())!= null) {
-			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée.");
+			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
 		}
 	}
-
 }

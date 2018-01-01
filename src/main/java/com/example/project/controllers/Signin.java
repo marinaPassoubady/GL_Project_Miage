@@ -1,5 +1,10 @@
 package com.example.project.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,6 +47,9 @@ public class Signin {
 	BlogService blogService;
 	
 	@Autowired
+	HttpSession session;
+	
+	@Autowired
 	private UserConnexionValidator userConnexionValidator;
 	
 	@GetMapping("/")
@@ -52,23 +61,19 @@ public class Signin {
 		return model;
 	}
 	
-	@PostMapping("/")
-	public ModelAndView signInProceed(@ModelAttribute User user, BindingResult result/*, HttpSession session */) {
-		ModelAndView model = new ModelAndView();
-		userConnexionValidator.validate(user, result);
-		System.out.println("************");
-		if(result.hasErrors()) {
-			model.setViewName("connexion");
-			return model;
-		}
-		model.setViewName("redirect:themes");
-		return model;
-	}
-	
 	@GetMapping(value="/themes")
-	public ModelAndView afficherAccueil() {
+	public ModelAndView afficherAccueil(@RequestParam(value = "fetch", defaultValue="ALL") String fetch) {
 		ModelAndView model = new ModelAndView();
-		model.addObject("themes", blogService.getThemes());
+		User user = (User)session.getAttribute("user");
+		List<Theme> themes = new ArrayList<>();
+		if(fetch.equalsIgnoreCase("ALL")) {
+			themes = blogService.getThemes();
+		}
+		else if(fetch.equalsIgnoreCase("SELF")) {
+			themes = blogService.findThemesByAuteur(user);
+		}
+		model.addObject("user",user);
+		model.addObject("themes", themes);
 		logger.info("test *************************** "+blogService.getThemes().size());
 		model.addObject("theme", new Theme());
 		model.setViewName("themes");

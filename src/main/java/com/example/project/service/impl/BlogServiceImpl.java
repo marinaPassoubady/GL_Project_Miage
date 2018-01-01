@@ -3,12 +3,14 @@ package com.example.project.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
+import com.example.project.exceptions.*;
 import com.example.project.repositories.ArticleRepository;
 import com.example.project.repositories.ThemeRepository;
 import com.example.project.repositories.UserRepository;
@@ -26,9 +28,13 @@ public class BlogServiceImpl implements BlogService {
 	@Autowired
 	ArticleRepository articleRepository;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@Override
-	public void addUser(User user) {
-		userRepository.save(user);
+	public User addUser(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		return userRepository.save(user);
 	}
 
 	@Override
@@ -44,7 +50,7 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public User findUserByID(int id) {
-		return userRepository.getOne(id);
+		return userRepository.findOne(id);
 	}
 
 	@Override
@@ -58,9 +64,11 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
-	public Theme findThemeById(int id) {
-		return themeRepository.getOne(id);
-	}
+	public Theme findTheme(int id) throws ThemeInexistantException {
+		Theme theme = themeRepository.findOne(id);
+		if(theme == null) throw new ThemeInexistantException("Le theme dont l'identifiant est "+id+" n'existe pas.");
+		return theme;
+ 	}
 
 	@Override
 	public void addArticle(Article article) {
@@ -69,10 +77,16 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	@Transactional
-	public void evaluerArticle(int id, int val) {
-		Article article = articleRepository.getOne(id);
+	public int evaluerArticle(int userId, int aId, int val) throws ArticleInexistantException, DejaVoteException {
+		Article article = articleRepository.findOne(aId);
+		if (article == null) throw new ArticleInexistantException("l'article dont l'id est "+aId+" n'existe pas");
+		User user = new User();
+		user.setId(userId);
+		if (article.getVoteurs().contains(user)) throw new DejaVoteException("Vous avez déjà voté cet article");
+		article.getVoteurs().add(user);
 		article.setVotes(article.getVotes()+val);
 		articleRepository.save(article);
+		return article.getVotes();
 	}
 
 	@Override
@@ -88,4 +102,5 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 
+	
 }

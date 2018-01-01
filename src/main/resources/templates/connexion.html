@@ -82,20 +82,22 @@
           </div>
         </div>
         <button type="submit" class="ui fluid large teal button">Connexion</button>
-		 <div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
+<!-- "${#fields.hasErrors('*')}" --> <div th:if="${param.error}" class="ui center aligned negative message container">
 		  <div class="header">
 		   Erreur de connexion
 		  </div>
-			<ul>
+		<!-- 	<ul>
 			  <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
 			  <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
 			</ul>
+		 -->
+		 Email ou mot de passe invalide
 		 </div>
      </div>
     </form>
 
     <div class="ui message">
-      Vous n'avez pas de compte ? <a href="./signin">Créer un compte</a>
+      Pas de compte ? <a href="./signup">Créer un compte</a>
     </div>
   </div>
 </div>  
