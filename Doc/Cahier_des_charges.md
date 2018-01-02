@@ -201,6 +201,7 @@ Alors un bouton de "like" lui permet de le faire
 La sécurité des sites Web exige de la vigilance dans tous les aspects de sa conception et de son utilisation. 
 Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
 
+
 * Connexion	
 
 Lorsqu’un utilisateur saisie un identifiant ou mot de passe erroné, le message d’alerte : « Votre identifiant ou mot de passe est erroné » reste imprécis pour éviter toute usurpation d’identité. 
@@ -212,7 +213,18 @@ Les tests fonctionnels sont un service d’assurance qualité qui consiste à s�
 
 Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
 
-N°		Action à réaliser                         Résultat attendu                             Résultat obtenu 
-1		S’inscrire et valider l’inscription       Redirection vers la page des thèmes                OK
-2		 				   
+N°	Action à réaliser                         Résultat attendu                         Résultat obtenu 
+
+1	S’inscrire et valider l’inscription       Redirection vers la page des thèmes      A la fin de l’inscription on est bien rediriger          												                                        vers la page des thèmes 
+
+2	Se connecter avec des identifiants valide Redirection vers la page des thèmes      Après avoir saisie des identifiants valide, nous       												                                        sommes bien redirigé vers la page des thèmes
+
+3   Se connecter avec les identifiants       Retourner sami bouhafs à droite du menu   Après s’être connecter avec les identifiants 	de l’utilisateur sami						                                        sami.bouhafs et mot de passe « sa » le prénom
+											                                            affiché est « sami » et le nom « bouhafs » 
+
+4   Cliquer sur le bouton « Déconnexion »    Redirection vers la page de connexion     Aucune redirection effectuer => TEST KO 
+
+5   Cliquer sur le bouton « Ajouter un       Une pop-up apparait                       Lors du clique sur « Ajouter un thème » 
+	thème »	                                                                           une pop-up apparait instantanément 			                                                                
+											 	 				   
 
