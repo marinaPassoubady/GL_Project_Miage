@@ -201,6 +201,13 @@ Alors un bouton de "like" lui permet de le faire
 La sécurité des sites Web exige de la vigilance dans tous les aspects de sa conception et de son utilisation. 
 Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
 
+Tout au long de la réalisation de notre site, nous avons essayer de le rendre le plus sécurisé possible pour assurer aux utilisateurs un site de confiance où leurs informations seront protégées. 
+
+Les premières informations qu’il est primordiale de sécurisés sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécurisé les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de donnée le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
+
+Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecter ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. Inversement, un utilisateur connecter ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+
+
 
 * Connexion	
 
