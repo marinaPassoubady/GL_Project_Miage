@@ -1,5 +1,6 @@
 package com.example.project.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
+import com.example.project.entities.User;
 import com.example.project.service.BlogService;
 
 @Controller
@@ -32,6 +34,9 @@ public class AddArticle {
 	@Value("${verif.hasError}")
     private String hasError;
 	
+	@Autowired
+	HttpSession session;
+	
 	@PostMapping(value="theme")
 	public ModelAndView ajouterArticle(@RequestParam("tId") int id, @ModelAttribute("article") @Valid Article article ,BindingResult result) {
 		ModelAndView model = new ModelAndView();
@@ -40,6 +45,7 @@ public class AddArticle {
 			model.setViewName(objTheme);
 			return model;
 		}
+		article.setAuteur((User)session.getAttribute("user"));
 		article.setTheme(new Theme());
 		article.getTheme().setId(id);
 		blogService.addArticle(article);

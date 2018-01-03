@@ -5,18 +5,18 @@ import java.util.List;
 import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
+import com.example.project.exceptions.*;
 
 public interface BlogService {
-	void addUser(User user);
+	User addUser(User user);
 	User findUserByEmail(String email);
 	User findUserByID(int id);
 	void addTheme(Theme theme);
 	List<Theme> getThemes();
 	List<Theme> findThemesByAuteur(User user);
-	Theme findThemeById(int id);
+	Theme findTheme(int id) throws ThemeInexistantException;
 	void addArticle(Article article);
-	void evaluerArticle(int id, int val);
+	int evaluerArticle(int userId, int aId, int val) throws ArticleInexistantException, DejaVoteException;
 	void supprimerArticle(int id);
-	void supprimerTheme(int id);
-	
+	void supprimerTheme(int id);	
 }

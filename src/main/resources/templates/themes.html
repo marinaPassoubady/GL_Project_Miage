@@ -11,11 +11,11 @@
 </head>
 <body>
  <div class="ui sidebar left inverted vertical container menu">
-    <a href="./Envoyer" class="item">
+    <a href="./themes?fetch=ALL" class="item">
     <i class="comments icon"></i>
       Tous les thèmes
     </a>
-    <a href="./Boite" class="item">
+    <a href="./themes?fetch=SELF" class="item">
     <i class="comment icon"></i>
       Mes thèmes 
     </a>
@@ -27,11 +27,10 @@
 		  		<i class="sidebar icon"></i>
 		  		Menu
 		  		</a>
-		  		<a class="item">
-		  		Mohamed LEBIB
+		  		<a th:text="${user.getPrenom() + ' '+user.getNom()}" class="item">
 		  		</a>
 		  		<div class="right menu">
-    			<a href="./Deconnexion" class="item">
+    			<a href="/logout" class="item">
     			<i class="sign out icon"></i>
     			Déconnexion</a>
   				</div>
@@ -48,28 +47,6 @@
 		<div class="ui center aligned vertical segment">
 		<div class="ui positive button" id="show">Ajouter un thème</div>
 		</div>
-		<div class="ui vertical segment">
-		<form class="ui form">
-		<div class="fields">
-			<div class="seven wide field"></div>
-			<div class="three wide field">
-		        <select class="ui fluid dropdown" name="triDate">
-	            <option value="0" selected>Plus récents</option>
-	            <option value="1">Moins récents</option>
-		        </select>
-			</div>
-			<div class="three wide field">
-		        <select class="ui fluid dropdown" name="triVotes">
-	            <option value="0" selected>Plus votés</option>
-	            <option value="1">Moins votés</option>
-		        </select>
-			</div>
-			<div class="three wide field">
-    			<button type ="submit" class="ui right floated positive button">Trier</button>
-			</div>
-		</div>
-		</form>
-		</div>
 	<table class="ui single line table">
   <thead>
   	<th>Catégorie</th>
@@ -85,12 +62,11 @@
   		</td>
       <td>
       	   <img class="ui avatar image" src="assets/avatars/man.png">
-      <span >Mohamed LEBIB</span>
+      <span th:text="${t.getAuteur().getPrenom() + ' '+t.getAuteur().getNom()}"></span>
       </td>
-      <td th:text="${t.getTitre()}">Save the Elephants</td>
-      <td th:text="${t.getDateCreation()}">September 14, 2013</td>
+      <td th:text="${t.getTitre()}"></td>
+      <td th:text="${t.getDateCreation()}"></td>
       <td class="right aligned">
-      		  <a href="#" class="ui negative basic button">Supprimer</a>
       	      <a th:href="@{'/theme?id='+${t.getId()}}" class="ui button">Détails</a>
       </td>
     </tr>
@@ -114,9 +90,10 @@
 	          <div class="four wide field">
             	<label>Catégorie</label>
 		        <select class="ui fluid dropdown" name="categorie">
-	            <option value="environnement" selected>Environnement</option>
-	            <option value="pollution">Pollution</option>
-	            <option value="humanitaire">Humanitaire</option>
+	            <option value="Environnement" selected>Environnement</option>
+	            <option value="Pollution">Pollution</option>
+	            <option value="Humanitaire">Humanitaire</option>
+	            <option value="Autre">Autre</option>
 		        </select>
 		      </div>
 			</div>

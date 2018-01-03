@@ -1,5 +1,6 @@
 package com.example.project.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.entities.Theme;
+import com.example.project.entities.User;
 import com.example.project.service.BlogService;
 
 @Controller
@@ -19,6 +21,9 @@ public class AddTheme {
 	
 	@Autowired
 	BlogService blogService;
+	
+	@Autowired
+	HttpSession session;
 	
 	@Value("${verif.hasError}")
     private String hasError;
@@ -33,6 +38,7 @@ public class AddTheme {
 			model.addObject(hasError, true);
 			return model;
 		}
+		theme.setAuteur((User)session.getAttribute("user"));
 		blogService.addTheme(theme);
 		model.setViewName(redirectAccueil);
 		return model;

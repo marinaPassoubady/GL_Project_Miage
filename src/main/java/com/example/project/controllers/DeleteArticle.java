@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +20,7 @@ public class DeleteArticle {
 	@Value("${page.themeId}")
     private String pageThemeId;
 	
+	@GetMapping(value="deleteArticle")
 	public ModelAndView supprimerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId) {
 		ModelAndView model = new ModelAndView();
 		blogService.supprimerArticle(aId);

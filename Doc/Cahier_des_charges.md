@@ -186,6 +186,7 @@ Alors un formulaire s'affiche et lui permet de le faire
 Étant donné l'utilisateur Marina connecté et le thème "Sauver les pingouins" choisi
 Quand Marina veut consulter un article
 Alors l'article choisi apparaît
+
 ### Voter article
 * Voter articles
 
@@ -195,5 +196,42 @@ Alors un bouton de "like" lui permet de le faire
 
 ## Passage des storytests
 
+### Sécurités
 
+La sécurité des sites Web exige de la vigilance dans tous les aspects de sa conception et de son utilisation. 
+Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
+
+Tout au long de la réalisation de notre site, nous avons essayer de le rendre le plus sécurisé possible pour assurer aux utilisateurs un site de confiance où leurs informations seront protégées. 
+
+Les premières informations qu’il est primordiale de sécurisés sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécurisé les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de donnée le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
+
+Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecter ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. Inversement, un utilisateur connecter ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+
+
+
+* Connexion	
+
+Lorsqu’un utilisateur saisie un identifiant ou mot de passe erroné, le message d’alerte : « Votre identifiant ou mot de passe est erroné » reste imprécis pour éviter toute usurpation d’identité. 
+
+
+### Tests Fonctionnel 
+
+Les tests fonctionnels sont un service d’assurance qualité qui consiste à s’assurer qu’un système (ou un de ses composants) fonctionne adéquatement. 
+
+Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
+
+N°	Action à réaliser                         Résultat attendu                         Résultat obtenu 
+
+1	S’inscrire et valider l’inscription       Redirection vers la page des thèmes      A la fin de l’inscription on est bien rediriger          												                                        vers la page des thèmes 
+
+2	Se connecter avec des identifiants valide Redirection vers la page des thèmes      Après avoir saisie des identifiants valide, nous       												                                        sommes bien redirigé vers la page des thèmes
+
+3   Se connecter avec les identifiants       Retourner sami bouhafs à droite du menu   Après s’être connecter avec les identifiants 	de l’utilisateur sami						                                        sami.bouhafs et mot de passe « sa » le prénom
+											                                            affiché est « sami » et le nom « bouhafs » 
+
+4   Cliquer sur le bouton « Déconnexion »    Redirection vers la page de connexion     Aucune redirection effectuer => TEST KO 
+
+5   Cliquer sur le bouton « Ajouter un       Une pop-up apparait                       Lors du clique sur « Ajouter un thème » 
+	thème »	                                                                           une pop-up apparait instantanément 			                                                                
+											 	 				   
 
