@@ -18,7 +18,7 @@ public class AuthAfterSignUp implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 		 
-		User user = (User)auth.getDetails(); 
+		User user = (User) auth.getDetails(); 
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken
 	            (user.getEmail(), user.getPassword(), Collections.emptyList());
 		return token;

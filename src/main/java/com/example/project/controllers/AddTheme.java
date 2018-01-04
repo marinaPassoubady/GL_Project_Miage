@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
+import com.example.project.tools.Constante;
 
 @Controller
 @PropertySource("constante.properties")
@@ -35,12 +36,12 @@ public class AddTheme {
 	public ModelAndView ajouterTheme(@Valid Theme theme, BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(hasError, true);
+			model.addObject(Constante.erreur, true);
 			return model;
 		}
-		theme.setAuteur((User)session.getAttribute("user"));
+		theme.setAuteur((User)session.getAttribute(Constante.user));
 		blogService.addTheme(theme);
-		model.setViewName(redirectAccueil);
+		model.setViewName(Constante.accueil);
 		return model;
 	}
 

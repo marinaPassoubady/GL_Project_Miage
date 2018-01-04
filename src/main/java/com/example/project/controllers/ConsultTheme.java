@@ -16,6 +16,7 @@ import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.exceptions.ThemeInexistantException;
 import com.example.project.service.BlogService;
+import com.example.project.tools.Constante;
 
 @Controller
 @PropertySource("constante.properties")
@@ -27,15 +28,6 @@ public class ConsultTheme {
 	@Autowired
 	HttpSession session;
 	
-	@Value("${objet.theme}")
-    private String objTheme;
-	
-	@Value("${page.accueil}")
-    private String redirectThemes;
-	
-	@Value("${objet.article}")
-    private String objArticle;
-	
 	@ModelAttribute
 	@GetMapping(value="theme")
 	public ModelAndView consulterTheme(@RequestParam("id") int id) {
@@ -43,14 +35,14 @@ public class ConsultTheme {
 		ModelAndView model = new ModelAndView();
 		try {
 			Theme theme = blogService.findTheme(id);
-			model.addObject(objTheme, theme);
+			model.addObject(Constante.theme, theme);
 			Article article = new Article();
-			model.addObject(objArticle, article);
-			model.addObject("user", (User)session.getAttribute("user"));
-			model.setViewName(objTheme);
+			model.addObject(Constante.article, article);
+			model.addObject(Constante.user, (User)session.getAttribute(Constante.user));
+			model.setViewName(Constante.theme);
 			return model;
 		} catch (ThemeInexistantException e) {
-			model.setViewName(redirectThemes);
+			model.setViewName(Constante.themes_accueil);
 			return model;
 		}
 	}

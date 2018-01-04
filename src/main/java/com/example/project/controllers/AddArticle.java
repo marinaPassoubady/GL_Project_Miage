@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +16,7 @@ import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
+import com.example.project.tools.Constante;
 
 @Controller
 @PropertySource("constante.properties")
@@ -25,15 +25,6 @@ public class AddArticle {
 	@Autowired
 	BlogService blogService;
 	
-	@Value("${objet.theme}")
-    private String objTheme;
-	
-	@Value("${page.themeId}")
-    private String pageThemeId;
-	
-	@Value("${verif.hasError}")
-    private String hasError;
-	
 	@Autowired
 	HttpSession session;
 	
@@ -41,15 +32,15 @@ public class AddArticle {
 	public ModelAndView ajouterArticle(@RequestParam("tId") int id, @ModelAttribute("article") @Valid Article article ,BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(hasError, true);
-			model.setViewName(objTheme);
+			model.addObject(Constante.erreur, true);
+			model.setViewName(Constante.theme);
 			return model;
 		}
-		article.setAuteur((User)session.getAttribute("user"));
+		article.setAuteur((User)session.getAttribute(Constante.user));
 		article.setTheme(new Theme());
 		article.getTheme().setId(id);
 		blogService.addArticle(article);
-		model.setViewName(pageThemeId+id);
+		model.setViewName(Constante.theme_select+id);
 		return model;
 	}
 
