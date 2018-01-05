@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
@@ -56,9 +55,6 @@ public class SignUpTest {
 	
 	@Test
 	public void signUpProceedTest_ErrorInfosUser() {
-		u.setEmail("marina@mail.fr");
-		u.setPassword("moi");
-		u.setConfirm("moi");
 		assertEquals("inscription",signupcontroller.signUpProceed(u,br));
 	}
 

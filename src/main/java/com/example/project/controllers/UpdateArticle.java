@@ -3,8 +3,6 @@ package com.example.project.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +12,9 @@ import com.example.project.entities.User;
 import com.example.project.exceptions.ArticleInexistantException;
 import com.example.project.exceptions.DejaVoteException;
 import com.example.project.service.BlogService;
+import com.example.project.tools.Constante;
 
 @Controller
-@PropertySource("constante.properties")
 public class UpdateArticle {
 	
 	@Autowired
@@ -24,9 +22,6 @@ public class UpdateArticle {
 	
 	@Autowired
 	HttpSession session;	
-
-	@Value("${page.themeId}")
-    private String pageThemeId;
 	
 	@GetMapping(value="evalArticle")
 	public ModelAndView evaluerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId, @RequestParam int val) {
@@ -34,11 +29,11 @@ public class UpdateArticle {
 		try {
 			blogService.evaluerArticle(((User)session.getAttribute("user")).getId(), aId, val);
 		} catch (ArticleInexistantException e) {
-			model.setViewName(pageThemeId+tId);
+			model.setViewName(Constante.theme_select+tId);
 			return model;
 		} catch (DejaVoteException e) {
 		}
-		model.setViewName(pageThemeId+tId+"#"+aId);
+		model.setViewName(Constante.theme_select+tId+"#"+aId);
 		return model;
 	}
 

@@ -5,6 +5,8 @@ import java.util.Collections;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.PropertySource;
@@ -27,6 +29,8 @@ import com.example.project.validators.UserInscriptionValidator;
 @Controller
 @PropertySource("constante.properties")
 public class Signup {
+	
+	private static final Logger logger = LoggerFactory.getLogger(Signin.class);
 	
 	@Autowired
 	HttpSession session;
@@ -54,8 +58,8 @@ public class Signup {
 		userInscriptionValidator.validate(user, result);
 		if(result.hasErrors()) return Constante.inscription;
 		user = blogService.addUser(user);
-		System.out.println("*****************"+user.getConfirm());
-		System.out.println("*****************");
+		logger.info("*****************"+user.getConfirm());
+		logger.info("*****************");
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken
 	            (user.getEmail(), user.getPassword(), Collections.emptyList());
 		token.setDetails(user);
