@@ -2,9 +2,6 @@ package com.example.project.controllers;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.junit.Before;
@@ -14,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.example.project.entities.Theme;
 import com.example.project.exceptions.ThemeInexistantException;
 import com.example.project.service.BlogService;
 
