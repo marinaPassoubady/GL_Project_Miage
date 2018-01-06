@@ -49,7 +49,9 @@ public class SignInTest {
 	private HttpSession session;
 	
 	//@Mock
-	private String fetch = "SELF";
+	private String fetch_self = "SELF";
+	
+	private String fetch_all = "ALL";
 
 	@Before 
 	public void setUp() throws Exception {
@@ -73,11 +75,20 @@ public class SignInTest {
 	}
 	
 	@Test
-	public void afficherAccueilTest() throws Exception {
+	public void afficherAccueilTest_FetchSELF() {
 		session.setAttribute("user", new User());
-		assertNotNull(signincontroller.afficherAccueil("SELF"));
+		assertNotNull(signincontroller.afficherAccueil(fetch_self));
+		Theme theme = new Theme();
+		assertEquals("themes",signincontroller.afficherAccueil(fetch_self).getViewName());
+		assertEquals(theme,signincontroller.afficherAccueil(fetch_self).getModel());
+	}
+	
+	@Test
+	public void afficherAccueilTest_FetchALL() {
+		session.setAttribute("user", new User());
+		assertNotNull(signincontroller.afficherAccueil(fetch_all));
 		
-		assertEquals("themes",signincontroller.afficherAccueil("SELF").getViewName());
+		assertEquals("themes",signincontroller.afficherAccueil(fetch_all).getViewName());
 	}
 
 }

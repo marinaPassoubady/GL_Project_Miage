@@ -47,7 +47,6 @@ public class Signin {
 		ModelAndView model = new ModelAndView();
 		User user = (User)session.getAttribute(Constante.user);
 		List<Theme> themes = new ArrayList<>();
-		System.out.println("nom de la value"+fetch);
 		if(fetch.equalsIgnoreCase(Constante.fetch_all)) {
 			themes = blogService.getThemes();
 		}
