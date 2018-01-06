@@ -21,7 +21,7 @@
       max-width: 450px;
     }
   </style>
- <!--  <script>
+  <script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -55,7 +55,7 @@
       ;
     })
   ;
-  </script> -->
+  </script>
 </head>
 
 
@@ -82,15 +82,10 @@
           </div>
         </div>
         <button type="submit" class="ui fluid large teal button">Connexion</button>
-<!-- "${#fields.hasErrors('*')}" --> <div th:if="${param.error}" class="ui center aligned negative message container">
+		<div th:if="${param.error}" class="ui center aligned negative message container">
 		  <div class="header">
 		   Erreur de connexion
 		  </div>
-		<!-- 	<ul>
-			  <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
-			  <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
-			</ul>
-		 -->
 		 Email ou mot de passe invalide
 		 </div>
      </div>

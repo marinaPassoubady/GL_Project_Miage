@@ -20,7 +20,7 @@
       max-width: 450px;
     }
   </style>
- <!--  <script>
+  <script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -87,7 +87,7 @@
       ;
     })
   ;
-  </script> -->
+  </script>
 </head>
 
 
@@ -106,9 +106,6 @@
             <i class="user icon"></i>
             <input type="text" name="prenom" placeholder="Prénom" th:field="*{prenom}" />
           </div>
-<!--             <div th:if="${#fields.hasErrors('prenom')}"> 
-         		<p th:each="err : ${#fields.errors('prenom')}" th:text="${err}"></p>
-         	</div> -->
 		 </div>
 		  <div class="field">
 		  <div class="ui left icon input">
