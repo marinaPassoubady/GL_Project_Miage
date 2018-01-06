@@ -28,9 +28,6 @@ public class BlogServiceImplTest {
 	@Mock
 	private ThemeRepository themeRepository;
 	
-	@Mock
-	
-	
 	@InjectMocks
 	BlogServiceImpl bsi;
 	

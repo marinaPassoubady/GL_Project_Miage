@@ -42,7 +42,7 @@ public class AddThemeTest {
 		assertEquals(null,addThemeController.ajouterTheme(new Theme(),br).getViewName());
 	}
 	
-	@Test(expected = Exception.class)
+	@Test()
 	public void ajouterThemeTest_NoError() {
 		Mockito.when(br.hasErrors()).thenReturn(false);
 		assertEquals("redirect:themes",addThemeController.ajouterTheme(new Theme(),br).getViewName());
