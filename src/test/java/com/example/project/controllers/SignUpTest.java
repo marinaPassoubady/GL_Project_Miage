@@ -18,7 +18,6 @@ import org.springframework.validation.BindingResult;
 
 import com.example.project.entities.User;
 import com.example.project.service.BlogService;
-import com.example.project.service.impl.BlogServiceImpl;
 import com.example.project.validators.UserInscriptionValidator;
 
 @RunWith(SpringRunner.class)

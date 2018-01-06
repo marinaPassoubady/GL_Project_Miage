@@ -78,9 +78,8 @@ public class SignInTest {
 	public void afficherAccueilTest_FetchSELF() {
 		session.setAttribute("user", new User());
 		assertNotNull(signincontroller.afficherAccueil(fetch_self));
-		Theme theme = new Theme();
+
 		assertEquals("themes",signincontroller.afficherAccueil(fetch_self).getViewName());
-		assertEquals(theme,signincontroller.afficherAccueil(fetch_self).getModel());
 	}
 	
 	@Test
