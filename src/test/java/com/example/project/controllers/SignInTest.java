@@ -47,6 +47,9 @@ public class SignInTest {
 	
 	@Mock
 	private HttpSession session;
+	
+	//@Mock
+	private String fetch = "SELF";
 
 	@Before 
 	public void setUp() throws Exception {
@@ -57,6 +60,7 @@ public class SignInTest {
 		theme.add(t);
 		MockitoAnnotations.initMocks(this);
 		Mockito.when(bs.getThemes()).thenReturn(theme);
+		//Mockito.when(fetch.equalsIgnoreCase("SELF")).thenReturn(true);
 	}
 	
 	@Test
@@ -71,9 +75,9 @@ public class SignInTest {
 	@Test
 	public void afficherAccueilTest() throws Exception {
 		session.setAttribute("user", new User());
-		assertNotNull(signincontroller.afficherAccueil(""));
+		assertNotNull(signincontroller.afficherAccueil("SELF"));
 		
-		assertEquals("themes",signincontroller.afficherAccueil("").getViewName());
+		assertEquals("themes",signincontroller.afficherAccueil("SELF").getViewName());
 	}
 
 }

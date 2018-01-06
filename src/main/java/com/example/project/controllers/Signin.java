@@ -47,6 +47,7 @@ public class Signin {
 		ModelAndView model = new ModelAndView();
 		User user = (User)session.getAttribute(Constante.user);
 		List<Theme> themes = new ArrayList<>();
+		System.out.println("nom de la value"+fetch);
 		if(fetch.equalsIgnoreCase(Constante.fetch_all)) {
 			themes = blogService.getThemes();
 		}
@@ -55,7 +56,6 @@ public class Signin {
 		}
 		model.addObject(Constante.user,user);
 		model.addObject(Constante.themes_accueil, themes);
-		logger.info("test *************************** "+blogService.getThemes().size());
 		model.addObject(Constante.theme, new Theme());
 		model.setViewName(Constante.themes_accueil);
 		return model;

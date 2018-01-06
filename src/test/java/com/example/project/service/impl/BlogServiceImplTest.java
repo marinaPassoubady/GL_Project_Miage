@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -22,21 +25,34 @@ import com.example.project.service.BlogService;
 @RunWith(SpringRunner.class)
 public class BlogServiceImplTest {
 
-	@MockBean
+	@Mock
 	private ThemeRepository themeRepository;
+	
+	@Mock
+	
+	
+	@InjectMocks
+	BlogServiceImpl bsi;
+	
+	private User alex;
 	
 	@Before
 	public void setUp() {
-		User alex = new User();
+		MockitoAnnotations.initMocks(this);
+		alex = new User();
 		alex.setId(1);
 
 		Mockito.when(themeRepository.findByAuteur(alex))
 		.thenReturn(new ArrayList<Theme>());
 	}
 	
+	@Test
+	public void findThemesByAuteurTest() {
+		assertEquals(new ArrayList<Theme>(),bsi.findThemesByAuteur(alex));
+	}
 	
 	@Test
-	public void test() {
-		
+	public void findUserByEmailTest() {
+		 
 	}
 }
