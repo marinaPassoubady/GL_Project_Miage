@@ -1,5 +1,6 @@
 package com.example.project.entities;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
-public class User {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -97,6 +98,11 @@ public class User {
 	@Override
 	public boolean equals(Object obj) {
 		return ((obj instanceof User) && ((User)obj).id == id); 
+	}
+	
+	@Override
+	public int hashCode() {
+		return ((Integer)id).hashCode();
 	}
 	
 }
