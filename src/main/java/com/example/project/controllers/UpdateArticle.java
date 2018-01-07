@@ -32,6 +32,8 @@ public class UpdateArticle {
 			model.setViewName(Constante.theme_select+tId);
 			return model;
 		} catch (DejaVoteException e) {
+		model.setViewName(Constante.theme_select+tId+"#"+aId);
+		return model;
 		}
 		model.setViewName(Constante.theme_select+tId+"#"+aId);
 		return model;

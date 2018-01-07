@@ -2,6 +2,10 @@ package com.example.project.tools;
 
 public final class Constante {
 	
+	private Constante() {
+		
+	}
+	
 	public static final String connexion = "connexion";
 	public static final String inscription = "inscription";
 	public static final String accueil = "redirect:themes";

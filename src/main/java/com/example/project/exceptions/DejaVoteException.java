@@ -9,7 +9,6 @@ public class DejaVoteException extends Exception {
 
 	public DejaVoteException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 	
 }
