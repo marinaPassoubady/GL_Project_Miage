@@ -14,9 +14,13 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.project.entities.Article;
 import com.example.project.entities.Theme;
 import com.example.project.entities.User;
+import com.example.project.exceptions.ArticleInexistantException;
+import com.example.project.exceptions.DejaVoteException;
 import com.example.project.exceptions.ThemeInexistantException;
+import com.example.project.repositories.ArticleRepository;
 import com.example.project.repositories.ThemeRepository;
 import com.example.project.repositories.UserRepository;
 
@@ -31,6 +35,9 @@ public class BlogServiceImplTest {
 	private UserRepository userRepository;
 	
 	@Mock
+	private ArticleRepository articleRepository;
+	
+	@Mock
 	private PasswordEncoder passwordEncoder;
 	
 	@InjectMocks
@@ -39,8 +46,14 @@ public class BlogServiceImplTest {
 	@Mock
 	private User alex;
 	
-	User user;
-	Theme theme;
+	private User user;
+	private Theme theme;
+	
+	@Mock
+	private Article article;
+	
+	@Mock
+	ArrayList<User> listeVoteurs;
 	
 	@Before
 	public void setUp() {
@@ -48,6 +61,7 @@ public class BlogServiceImplTest {
 		
 		user = new User();
 		theme = new Theme();
+		
 		ArrayList<Theme> themes = new ArrayList<Theme>();
 		
 		themes.add(new Theme());
@@ -67,6 +81,7 @@ public class BlogServiceImplTest {
 		Mockito.when(userRepository.findOne(1)).thenReturn(user);
 		
 		Mockito.when(themeRepository.findAll()).thenReturn(themes);
+		Mockito.when(articleRepository.save(new Article())).thenReturn(new Article());
 
 	}
 	
@@ -112,6 +127,36 @@ public class BlogServiceImplTest {
 		Mockito.when(themeRepository.findOne(1)).thenReturn(theme);
 		assertEquals(theme,bsi.findTheme(1));
 	}
+	
+	@Test
+	public void addArticleTest() {
+		bsi.addArticle(new Article());
+	}
+	
+	@Test
+	public void evaluerArticleTest_NoError() throws ArticleInexistantException, DejaVoteException {
+		Mockito.when(articleRepository.findOne(1)).thenReturn(article);
+		Mockito.when(listeVoteurs.contains(user)).thenReturn(false);
+		Mockito.when(article.getVotes()).thenReturn(3);
+		
+		assertEquals(3,bsi.evaluerArticle(1, 1, 1));
+	}
+	
+	@Test(expected = ArticleInexistantException.class)
+	public void evaluerArticleTest_ThrowArticleInexistantException() throws ArticleInexistantException, DejaVoteException {
+		Mockito.when(articleRepository.findOne(1)).thenReturn(null);
+		bsi.evaluerArticle(1, 1, 1);
+	}
+	
+	@Test/*(expected = DejaVoteException.class)*/
+	public void evaluerArticleTest_ThrowDejaVoteException() throws ArticleInexistantException, DejaVoteException {
+		Mockito.when(articleRepository.findOne(1)).thenReturn(article);
+		Mockito.when(article.getVoteurs()).thenReturn(listeVoteurs);
+		Mockito.when(listeVoteurs.contains(user)).thenReturn(true);
+		assertEquals(0,bsi.evaluerArticle(1, 1, 1));
+	}
+	
+	
 	
 
 }

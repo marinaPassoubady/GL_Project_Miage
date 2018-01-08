@@ -32,6 +32,7 @@ public class UserConnexionValidator implements Validator{
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
 		 if(user.getEmail().equals("")) err.rejectValue("email", "inexists","Les champs de doivent pas etre vides ! ");
 		 if(user.getPassword().equals("")) err.rejectValue("password", "inexists","Les champs de doivent pas etre vides !");
+		 System.out.println(err.getObjectName());
 		}
 		else {
 			finalUser = blogService.findUserByEmail(user.getEmail());
