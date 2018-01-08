@@ -21,7 +21,7 @@ public class DeleteArticle {
 	public ModelAndView supprimerArticle(@RequestParam("tId") int tId, @RequestParam("aId") int aId) {
 		ModelAndView model = new ModelAndView();
 		blogService.supprimerArticle(aId);
-		model.setViewName(Constante.theme_select+tId);
+		model.setViewName(Constante.THEME_SELECT+tId);
 		return model;
 	}
 

@@ -34,14 +34,14 @@ public class ConsultTheme {
 		ModelAndView model = new ModelAndView();
 		try {
 			Theme theme = blogService.findTheme(id);
-			model.addObject(Constante.theme, theme);
+			model.addObject(Constante.THEME, theme);
 			Article article = new Article();
-			model.addObject(Constante.article, article);
-			model.addObject(Constante.user, (User)session.getAttribute(Constante.user));
-			model.setViewName(Constante.theme);
+			model.addObject(Constante.ARTICLE, article);
+			model.addObject(Constante.USER, (User)session.getAttribute(Constante.USER));
+			model.setViewName(Constante.THEME);
 			return model;
 		} catch (ThemeInexistantException e) {
-			model.setViewName(Constante.themes_accueil);
+			model.setViewName(Constante.THEMES_ACCUEIL);
 			return model;
 		}
 	}

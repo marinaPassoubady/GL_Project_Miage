@@ -42,24 +42,24 @@ public class Signup {
 	@GetMapping("/signup")
 	public ModelAndView signup() {
 		ModelAndView model = new ModelAndView();
-		model.addObject(Constante.user, new User());
-		model.setViewName(Constante.inscription);
+		model.addObject(Constante.USER, new User());
+		model.setViewName(Constante.INSCRIPTION);
 		return model;
 	}
 	
 	@PostMapping(value="/signup")
 	public String signUpProceed(@Valid User user, BindingResult result) {
 		userInscriptionValidator.validate(user, result);
-		if(result.hasErrors()) return Constante.inscription;
+		if(result.hasErrors()) return Constante.INSCRIPTION;
 		user = blogService.addUser(user);
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken
 	            (user.getEmail(), user.getPassword(), Collections.emptyList());
 		token.setDetails(user);
 		Authentication authentication = authManager.authenticate(token);
-		session.setAttribute(Constante.user, user);
+		session.setAttribute(Constante.USER, user);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-		return Constante.accueil;
+		return Constante.ACCUEIL;
 	}
 
 }

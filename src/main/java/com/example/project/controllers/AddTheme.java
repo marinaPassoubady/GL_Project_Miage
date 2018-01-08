@@ -36,12 +36,12 @@ public class AddTheme {
 	public ModelAndView ajouterTheme(@Valid Theme theme, BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(Constante.erreur, true);
+			model.addObject(Constante.ERREUR, true);
 			return model;
 		}
-		theme.setAuteur((User)session.getAttribute(Constante.user));
+		theme.setAuteur((User)session.getAttribute(Constante.USER));
 		blogService.addTheme(theme);
-		model.setViewName(Constante.accueil);
+		model.setViewName(Constante.ACCUEIL);
 		return model;
 	}
 

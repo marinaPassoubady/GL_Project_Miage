@@ -36,27 +36,26 @@ public class Signin {
 	@GetMapping("/")
 	public ModelAndView signin() {
 		ModelAndView model = new ModelAndView();
-		model.addObject(Constante.user, new User());
-		logger.info(Constante.connexion);
-		model.setViewName(Constante.connexion);
+		model.addObject(Constante.USER, new User());
+		model.setViewName(Constante.CONNEXION);
 		return model;
 	}
 	
 	@GetMapping(value="/themes")
 	public ModelAndView afficherAccueil(@RequestParam(value = "fetch", defaultValue="ALL") String fetch) {
 		ModelAndView model = new ModelAndView();
-		User user = (User)session.getAttribute(Constante.user);
+		User user = (User)session.getAttribute(Constante.USER);
 		List<Theme> themes = new ArrayList<>();
-		if(fetch.equalsIgnoreCase(Constante.fetch_all)) {
+		if(fetch.equalsIgnoreCase(Constante.FETCH_ALL)) {
 			themes = blogService.getThemes();
 		}
-		else if(fetch.equalsIgnoreCase(Constante.fetch_self)) {
+		else if(fetch.equalsIgnoreCase(Constante.FETCH_SELF)) {
 			themes = blogService.findThemesByAuteur(user);
 		}
-		model.addObject(Constante.user,user);
-		model.addObject(Constante.themes_accueil, themes);
-		model.addObject(Constante.theme, new Theme());
-		model.setViewName(Constante.themes_accueil);
+		model.addObject(Constante.USER,user);
+		model.addObject(Constante.THEMES_ACCUEIL, themes);
+		model.addObject(Constante.THEME, new Theme());
+		model.setViewName(Constante.THEMES_ACCUEIL);
 		return model;
 	}
 

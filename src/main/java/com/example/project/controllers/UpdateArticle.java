@@ -29,13 +29,13 @@ public class UpdateArticle {
 		try {
 			blogService.evaluerArticle(((User)session.getAttribute("user")).getId(), aId, val);
 		} catch (ArticleInexistantException e) {
-			model.setViewName(Constante.theme_select+tId);
+			model.setViewName(Constante.THEME_SELECT+tId);
 			return model;
 		} catch (DejaVoteException e) {
-		model.setViewName(Constante.theme_select+tId+"#"+aId);
+		model.setViewName(Constante.THEME_SELECT+tId+"#"+aId);
 		return model;
 		}
-		model.setViewName(Constante.theme_select+tId+"#"+aId);
+		model.setViewName(Constante.THEME_SELECT+tId+"#"+aId);
 		return model;
 	}
 

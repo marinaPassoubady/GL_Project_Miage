@@ -32,15 +32,15 @@ public class AddArticle {
 	public ModelAndView ajouterArticle(@RequestParam("tId") int id, @ModelAttribute("article") @Valid Article article ,BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(Constante.erreur, true);
-			model.setViewName(Constante.theme);
+			model.addObject(Constante.ERREUR, true);
+			model.setViewName(Constante.THEME);
 			return model;
 		}
-		article.setAuteur((User)session.getAttribute(Constante.user));
+		article.setAuteur((User)session.getAttribute(Constante.USER));
 		article.setTheme(new Theme());
 		article.getTheme().setId(id);
 		blogService.addArticle(article);
-		model.setViewName(Constante.theme_select+id);
+		model.setViewName(Constante.THEME_SELECT+id);
 		return model;
 	}
 
