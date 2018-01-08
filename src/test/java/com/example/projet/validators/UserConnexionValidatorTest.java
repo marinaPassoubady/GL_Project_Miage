@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
 import org.springframework.validation.Errors;
 
 import com.example.project.entities.User;
@@ -26,21 +27,36 @@ public class UserConnexionValidatorTest {
 	User u;
 	
 	@Mock
-	Errors err;
+	BindingResult br;
+	
+	String mail;
+	String password;
 	
 	@Before
 	public void setUp() throws Exception {
+		mail = "";
+		password = "";
 		uvc = new UserConnexionValidator();
 		MockitoAnnotations.initMocks(this);
-		Mockito.when(u.getEmail()).thenReturn("");
-		Mockito.when(u.getPassword()).thenReturn("");
+		Mockito.when(u.getEmail()).thenReturn(mail);
+		Mockito.when(u.getPassword()).thenReturn(password);
 	}
 
 	@Test
 	public void validateTest() {
-		uvc.validate(u, err);
-		err.rejectValue("field","code","defaultmessage");
-		System.out.println(err.getFieldErrors("field"));
+		//demander au prof
+		uvc.validate(u, br);
+		System.out.println(br.getFieldErrorCount());
+	}
+	
+	//@Test
+	public void validateTest_IfNull() {
+		mail = "mail";
+		password ="pass";
+		Mockito.when(u.getEmail()).thenReturn(mail);
+		Mockito.when(u.getPassword()).thenReturn(password);
+		Mockito.when(bs.findUserByEmail(u.getEmail())).thenReturn(u);
+		uvc.validate(u, br);
 	}
 
 }

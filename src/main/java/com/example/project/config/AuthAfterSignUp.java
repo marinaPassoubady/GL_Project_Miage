@@ -19,7 +19,8 @@ public class AuthAfterSignUp implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 		 
-		User user = (User) auth.getDetails(); 
+		User user = (User) auth.getDetails();
+		System.out.println(user);
 		if (user == null) throw new AuthenticationServiceException("Une erreur est survenue lors de l'authentification ! Veuillez réessayer.");
 		return new UsernamePasswordAuthenticationToken
 	            (user.getEmail(), user.getPassword(), Collections.emptyList());
