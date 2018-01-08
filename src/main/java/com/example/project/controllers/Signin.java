@@ -25,8 +25,6 @@ import com.example.project.tools.Constante;
 @PropertySource("constante.properties")
 public class Signin {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Signin.class);
-	
 	@Autowired
 	BlogService blogService;
 	
