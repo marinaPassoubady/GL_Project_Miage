@@ -26,7 +26,7 @@ public class ConsultTheme {
 	
 	@Autowired
 	HttpSession session;
-	
+	//ajouter param date et vote
 	@ModelAttribute
 	@GetMapping(value="theme")
 	public ModelAndView consulterTheme(@RequestParam("id") int id) {
