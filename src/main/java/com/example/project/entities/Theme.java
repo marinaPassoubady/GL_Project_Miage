@@ -15,8 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 @Entity
+@PropertySource("dateformat.properties")
 public class Theme {
 	
 	@Id
@@ -33,6 +36,10 @@ public class Theme {
 	
 	@NotEmpty(message="Veuillez renseigner une catégorie !")
 	private String categorie;
+	
+	@Value("${date.format}")
+	private String dateFormat;
+	
 	private String dateCreation = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	
 	@OneToMany(mappedBy="theme")

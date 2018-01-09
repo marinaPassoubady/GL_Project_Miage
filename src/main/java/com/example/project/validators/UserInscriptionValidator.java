@@ -27,7 +27,7 @@ public class UserInscriptionValidator implements Validator {
 			err.rejectValue("confirm", "password.confirm", "Les mots de passe ne correspondent pas !");
 		}
 			
-		if(blogService.findUserByEmail(user.getEmail())!= null) {
+		if(blogService.findUserByEmail("mail")!= null) {
 			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
 		}
 	}

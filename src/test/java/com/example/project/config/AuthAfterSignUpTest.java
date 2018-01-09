@@ -1,18 +1,17 @@
 package com.example.project.config;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.Authentication;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.project.entities.User;
 
-@RunWith(SpringRunner.class)
+@PropertySource("dateformat.properties")
 public class AuthAfterSignUpTest {
 	
 	@Mock
@@ -20,6 +19,9 @@ public class AuthAfterSignUpTest {
 	
 	@Mock
 	Authentication authi;
+	
+	@Value("${dateformat}")
+	private String dateFormat;
 
 	@Before
 	public void setUp() throws Exception {
@@ -30,6 +32,13 @@ public class AuthAfterSignUpTest {
 	@Test
 	public void authenticateTest() {
 		auth.authenticate(authi);
+	}
+	
+	@Test
+	public void test() {
+		User u = new User();
+		u.setNom("moi");
+		System.out.println(u.getNom());
 	}
 
 }
