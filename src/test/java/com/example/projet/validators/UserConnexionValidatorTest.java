@@ -57,6 +57,8 @@ public class UserConnexionValidatorTest {
 		Mockito.when(u.getPassword()).thenReturn(password);
 		Mockito.when(bs.findUserByEmail(u.getEmail())).thenReturn(u);
 		uvc.validate(u, br);
+		Mockito.verify(br,Mockito.times(2)).rejectValue("", "", "");;
+		System.out.println();
 	}
 
 }

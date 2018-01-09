@@ -24,8 +24,6 @@ import com.example.project.repositories.ArticleRepository;
 import com.example.project.repositories.ThemeRepository;
 import com.example.project.repositories.UserRepository;
 
-
-@RunWith(SpringRunner.class)
 public class BlogServiceImplTest {
 
 	@Mock
@@ -60,6 +58,7 @@ public class BlogServiceImplTest {
 		MockitoAnnotations.initMocks(this);
 		
 		user = new User();
+		user.setId(1);
 		theme = new Theme();
 		
 		ArrayList<Theme> themes = new ArrayList<Theme>();
@@ -82,6 +81,8 @@ public class BlogServiceImplTest {
 		
 		Mockito.when(themeRepository.findAll()).thenReturn(themes);
 		Mockito.when(articleRepository.save(new Article())).thenReturn(new Article());
+		
+		
 
 	}
 	
@@ -136,7 +137,6 @@ public class BlogServiceImplTest {
 	@Test
 	public void evaluerArticleTest_NoError() throws ArticleInexistantException, DejaVoteException {
 		Mockito.when(articleRepository.findOne(1)).thenReturn(article);
-		Mockito.when(listeVoteurs.contains(user)).thenReturn(false);
 		Mockito.when(article.getVotes()).thenReturn(3);
 		
 		assertEquals(3,bsi.evaluerArticle(1, 1, 1));
@@ -148,15 +148,34 @@ public class BlogServiceImplTest {
 		bsi.evaluerArticle(1, 1, 1);
 	}
 	
-	@Test/*(expected = DejaVoteException.class)*/
+	@Test(expected = DejaVoteException.class)
 	public void evaluerArticleTest_ThrowDejaVoteException() throws ArticleInexistantException, DejaVoteException {
+		ArrayList<User> list = new ArrayList<User>();
+		
+		//listeVoteurs.add(alex);
+		User u = new User();
+		u.setId(1);
+		
 		Mockito.when(articleRepository.findOne(1)).thenReturn(article);
-		Mockito.when(article.getVoteurs()).thenReturn(listeVoteurs);
-		Mockito.when(listeVoteurs.contains(user)).thenReturn(true);
-		assertEquals(0,bsi.evaluerArticle(1, 1, 1));
+		Mockito.when(article.getVoteurs()).thenReturn(list);
+		
+		list.add(u);
+		
+		//System.out.println(article.getVoteurs().contains(alex));
+		
+		bsi.evaluerArticle(1, 1, 1);
 	}
 	
+	@Test
+	public void supprimerArticleTest() {
+		bsi.supprimerArticle(1);
+		Mockito.verify(articleRepository,Mockito.times(1)).delete(1);
+	}
 	
-	
+	@Test
+	public void supprimerThemeTest() {
+		bsi.supprimerTheme(1);
+		Mockito.verify(themeRepository, Mockito.times(1)).delete(1);
+	}
 
 }
