@@ -133,7 +133,7 @@ Alors l'inscription de Marina est refusée et le message "Cette adresse mail est
 
 Étant donné l'utilisateur Sami qui essaye de s'inscrire 
 Quand Sami saisit un mot de passe différent lors de la confirmation de mot de passe
-Alors l'inscription de Sami est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors l'inscription de Sami est refusée et le message "Les mots de passe ne correspondent pas. " apparaît.
 
 * Connexion acceptée
 
@@ -145,11 +145,11 @@ Alors la connexion au site est établie.
 
 Étant donné l'utilisateur Moha qui essaye de se connecter
 Quand Moha saisit une adresse mail erronée
-Alors la connexion de Moha est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors la connexion de Moha est refusée et le message « Veuillez entrer un email valide. » apparaît.
 
 Étant donné l'utilisateur Moha qui essaye de se connecter
 Quand Moha saisit un mot de passe erroné
-Alors la connexion de Moha est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors la connexion de Moha est refusée et le message "" apparaît.
 
 ### Création thème
 
@@ -190,7 +190,7 @@ Alors l'article choisi apparaît
 ### Voter article
 * Voter articles
 
-Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d'antartique" 
+Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d’Antartique" 
 Quand Bettina veut voter pour l'article
 Alors un bouton de "like" lui permet de le faire
 
@@ -205,8 +205,11 @@ Tout au long de la réalisation de notre site, nous avons essayer de le rendre l
 
 Les premières informations qu’il est primordiale de sécurisés sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécurisé les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de donnée le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
 
-Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecter ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. Inversement, un utilisateur connecter ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecté ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. 
 
+Un utilisateur connecté ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+
+Lors de l’inscription Spring Security authentifie l’utilisateur ainsi cet utilisateur inscrit ne peut accéder ni à la page inscription ni à la page de connexion. Malgré la tentative Spring Security le redirige toujours sur la page d’accueil. 
 
 
 * Connexion	
