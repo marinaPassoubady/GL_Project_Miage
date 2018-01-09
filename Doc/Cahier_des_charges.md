@@ -227,18 +227,12 @@ Les tests fonctionnels sont un service d’assurance qualité qui consiste à s�
 
 Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
 
-N°	Action à réaliser                         Résultat attendu                         Résultat obtenu 
-
-1	S’inscrire et valider l’inscription       Redirection vers la page des thèmes      A la fin de l’inscription on est bien rediriger          												                                        vers la page des thèmes 
-
-2	Se connecter avec des identifiants valide Redirection vers la page des thèmes      Après avoir saisie des identifiants valide, nous       												                                        sommes bien redirigé vers la page des thèmes
-
-3   Se connecter avec les identifiants       Retourner sami bouhafs à droite du menu   Après s’être connecter avec les identifiants 	de l’utilisateur sami						                                        sami.bouhafs et mot de passe « sa » le prénom
-											                                            affiché est « sami » et le nom « bouhafs » 
-
-4   Cliquer sur le bouton « Déconnexion »    Redirection vers la page de connexion     Aucune redirection effectuer => TEST KO 
-
-5   Cliquer sur le bouton « Ajouter un       Une pop-up apparait                       Lors du clique sur « Ajouter un thème » 
-	thème »	                                                                           une pop-up apparait instantanément 			                                                                
+|N°|Action à réaliser|Résultat attendu|Resultat obtenu|
+|-------|--------------------| ------------------ |:----------------| 
+1|S’inscrire et valider l’inscription |Redirection vers la page des thèmes|      A la fin de l’inscription on est bien rediriger vers la page des thèmes |
+2|	Se connecter avec des identifiants valides | Redirection vers la page des thèmes|Après avoir saisie des identifiants valides, nous sommes bien redirigé vers la page des thèmes|
+3|Se connecter avec les identifiants|Retourner sami bouhafs à droite du menu|   Après s’être connecter avec les identifiants de l’utilisateur sami login sami.bouhafs et mot de passe « sa » le prénom affiché est « sami » et le nom « bouhafs » |
+4|Cliquer sur le bouton « Déconnexion »|Redirection vers la page deconnexion |    Aucune redirection effectuer => TEST KO |
+5|Cliquer sur le bouton « Ajouter un thème »|Une pop-up apparait lors du clique sur « Ajouter un thème|une pop-up apparait instantanément 			                                                                
 											 	 				   
 
