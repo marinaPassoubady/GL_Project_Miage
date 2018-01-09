@@ -28,6 +28,8 @@ Les articles peuvent être votés. Le thème est cloturé automatiquement au bou
 
 Ainsi nous laissons libre pouvoir aux utilisateurs du site de produire gérer les thèmes et articles. D'autres fonctionnalités supplémentaires peuvent être ajoutés aux services proposés par le site. 
 
+Notre site web est Responsive (mobile first) pour offrir une expérience de lecture et de navigation optimales pour l'utilisateur quelle que soit sa gamme d'appareil (téléphones mobiles, tablettes, liseuses, moniteurs d'ordinateur de bureau).
+
 ---
 # Fonctionnalités du site 
 ## Inscription
