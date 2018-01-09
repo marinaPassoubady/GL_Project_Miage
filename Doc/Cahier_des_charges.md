@@ -149,7 +149,11 @@ Alors la connexion de Moha est refusée et le message « Veuillez entrer un ema
 
 Étant donné l'utilisateur Moha qui essaye de se connecter
 Quand Moha saisit un mot de passe erroné
-Alors la connexion de Moha est refusée et le message "" apparaît.
+Alors la connexion de Moha est refusée et le message « Email ou mot de passe invalide " apparaît.
+
+Étant donné l'utilisateur Moha qui essaye de se connecter
+Quand Moha oublie de remplir le champs mot de passe 
+Alors la connexion de Moha est refusée et le message « Veuillez remplir ce champs. " apparaît.
 
 ### Création thème
 
