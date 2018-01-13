@@ -1,4 +1,4 @@
-package com.example.projet.validators;
+package com.example.project.validators;
 
 import org.junit.Before;
 import org.junit.Test;
