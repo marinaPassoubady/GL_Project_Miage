@@ -1,44 +1,47 @@
 package com.example.project.config;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Collections;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
 import com.example.project.entities.User;
 
-@PropertySource("dateformat.properties")
 public class AuthAfterSignUpTest {
 	
-	@Mock
+	@InjectMocks
 	AuthAfterSignUp auth;
 	
 	@Mock
 	Authentication authi;
-	
-	@Value("${dateformat}")
-	private String dateFormat;
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		Mockito.when(authi.getDetails()).thenReturn(null);
 	}
 
-	@Test
-	public void authenticateTest() {
+	@Test(expected = AuthenticationServiceException.class)
+	public void authenticateTest_ThrowAuthenticationServiceException() {
+		Mockito.when(authi.getDetails()).thenReturn(null);
 		auth.authenticate(authi);
 	}
 	
 	@Test
-	public void test() {
+	public void authenticateTest_ReturnUsernamePasswordAuthenticationToken() {
 		User u = new User();
-		u.setNom("moi");
-		System.out.println(u.getNom());
+		u.setEmail("mail.fr");
+		u.setPassword("password");
+		Mockito.when(authi.getDetails()).thenReturn(u);
+		assertEquals(new UsernamePasswordAuthenticationToken(u.getEmail(),u.getPassword(),Collections.emptyList()),auth.authenticate(authi));
 	}
 
 }
