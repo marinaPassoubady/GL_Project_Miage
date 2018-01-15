@@ -44,12 +44,12 @@
    		<h2 class="ui center aligned icon header">
 		  <i class="comments icon"></i>
 		  <div th:text="${theme.getTitre()}" class="content">
-		    Sauvez les pingouins
+		  
 		  </div>
 		</h2>
    		<div class="ui divider"></div>
       <div class="ui stacked segment">
-      <span class="ui right floated button" th:text="${theme.getDateCreation()}">09/12/2017</span>
+      <span class="ui right floated button" th:text="${theme.getDateCreation()}"></span>
       <span th:text="${theme.getAuteur().getPrenom() + ' '+theme.getAuteur().getNom()}" class="ui header"></span>
       <p class="ui sub header" th:text="${theme.getCategorie()}"></p>
         <div class="ui divider"></div>
@@ -66,6 +66,29 @@
 			<i class="tag icon"></i>
 			PROPOSITIONS
 	   </h4>
+	   		<div class="ui vertical segment">
+		<form class="ui form" th:method="GET">
+		<input type="hidden" name="id" th:value="${theme.getId()}" />
+		<div class="fields">
+			<div class="seven wide field"></div>
+			<div class="three wide field">
+		        <select class="ui fluid dropdown" name="date">
+	            <option value="newest" selected>Plus récents</option>
+	            <option value="oldest">Moins récents</option>
+		        </select>
+			</div>
+			<div class="three wide field">
+		        <select class="ui fluid dropdown" name="voted">
+	            <option value="most" selected>Plus votés</option>
+	            <option value="least">Moins votés</option>
+		        </select>
+			</div>
+			<div class="three wide field">
+    			<button type ="submit" class="ui right floated positive button">Trier</button>
+			</div>
+		</div>
+		</form>
+		</div>
   	 <div class="ui vertical  padded segment">
   			<div th:each="article : ${theme.getArticles()}" class="ui raised segment column">
 			<div class="item" th:id="${article.getId()}">
@@ -134,13 +157,10 @@
       <i class="checkmark icon"></i>
     </button>
     </div>
-    <div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
+    <div th:if="${param.error}" class="ui left aligned negative message container">
 		<div class="header">
-		 Erreur d'ajout
+		 Erreur d'ajout. Veuillez renseigner tous les champs.
 		</div>
-		<ul>
-		  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-		</ul>
 	</div>
     </form>
   </div>
@@ -158,8 +178,11 @@
   		$('.ui.sidebar').sidebar('toggle'); 
   	});
   	
+  	$('.ui.dropdown')
+    .dropdown();
+  	
   </script>
-  <script th:if="${hasError}" >
+  <script th:if="${param.error}" >
 	$('.ui.modal').modal('show');
 </script>	
 </body>
