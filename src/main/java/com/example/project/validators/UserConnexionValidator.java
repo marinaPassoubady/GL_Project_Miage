@@ -12,7 +12,7 @@ import com.example.project.service.BlogService;
 
 @Component
 public class UserConnexionValidator implements Validator{
-
+	
 	@Autowired 
 	BlogService blogService;
 	
@@ -30,8 +30,12 @@ public class UserConnexionValidator implements Validator{
 	public void validate(Object obj, Errors err) {
 		User user = (User) obj;		
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
-		 if(user.getEmail().equals("")) err.rejectValue("email", "inexists","Les champs de doivent pas etre vides ! ");
-		 if(user.getPassword().equals("")) err.rejectValue("password", "inexists","Les champs de doivent pas etre vides !");
+		 if(user.getEmail().equals("")) {
+			 err.rejectValue("email", "inexists","Les champs de doivent pas etre vides !");
+		 }
+		 if(user.getPassword().equals("")) {
+			 err.rejectValue("password", "inexists","Les champs de doivent pas etre vides !");
+		 }
 		}
 		else {
 			finalUser = blogService.findUserByEmail(user.getEmail());
@@ -42,7 +46,6 @@ public class UserConnexionValidator implements Validator{
 				if(!passwordEncoder.matches(user.getPassword(), finalUser.getPassword())) {
 					err.rejectValue("password", "password.incorrect","Mot de passe incorrect !");
 				}
-				
 			}
 	
 		}

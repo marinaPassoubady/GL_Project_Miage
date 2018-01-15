@@ -12,14 +12,19 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
+@PropertySource("dateformat.properties")
 public class User implements Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -32,14 +37,17 @@ public class User implements Serializable {
 	private String prenom;
 	
 	@NotEmpty(message="Veuillez renseigner un email !")
-	@Email(message="Veuillez renseigner un email valide !")
+	@Email(message="Un emai est obligatoire.")
 	private String email;
 	
-	@NotEmpty(message="Veuillez renseigner un mot de passe !")
+	@NotEmpty(message="Un mot de passe est obligatoire.")
 	private String password;
 	
+	@Value("${dateformat}")
+	private String dateFormat;
+	
 	@Transient
-	@NotEmpty(message="Veuillez renseigner à nouveau le mot de passe !")
+	@NotEmpty(message="La confirmation du mot de passe est nécessaire.")
 	private String confirm;
 	String dateInscription =  new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 

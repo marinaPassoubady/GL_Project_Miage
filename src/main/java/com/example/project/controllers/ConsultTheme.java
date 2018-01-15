@@ -3,7 +3,6 @@ package com.example.project.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +17,6 @@ import com.example.project.service.BlogService;
 import com.example.project.tools.Constante;
 
 @Controller
-@PropertySource("constante.properties")
 public class ConsultTheme {
 	
 	@Autowired
@@ -26,7 +24,7 @@ public class ConsultTheme {
 	
 	@Autowired
 	HttpSession session;
-	
+	//ajouter param date et vote
 	@ModelAttribute
 	@GetMapping(value="theme")
 	public ModelAndView consulterTheme(@RequestParam("id") int id, @RequestParam(value = "date", defaultValue="newest") String date, @RequestParam(value = "voted", defaultValue="most") String voted) {

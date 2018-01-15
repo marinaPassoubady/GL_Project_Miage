@@ -28,6 +28,8 @@ Les articles peuvent être votés. Le thème est cloturé automatiquement au bou
 
 Ainsi nous laissons libre pouvoir aux utilisateurs du site de produire gérer les thèmes et articles. D'autres fonctionnalités supplémentaires peuvent être ajoutés aux services proposés par le site. 
 
+Notre site web est Responsive (mobile first) pour offrir une expérience de lecture et de navigation optimales pour l'utilisateur quelle que soit sa gamme d'appareil (téléphones mobiles, tablettes, liseuses, moniteurs d'ordinateur de bureau).
+
 ---
 # Fonctionnalités du site 
 ## Inscription
@@ -133,7 +135,7 @@ Alors l'inscription de Marina est refusée et le message "Cette adresse mail est
 
 Étant donné l'utilisateur Sami qui essaye de s'inscrire 
 Quand Sami saisit un mot de passe différent lors de la confirmation de mot de passe
-Alors l'inscription de Sami est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors l'inscription de Sami est refusée et le message "Les mots de passe ne correspondent pas. " apparaît.
 
 * Connexion acceptée
 
@@ -145,11 +147,15 @@ Alors la connexion au site est établie.
 
 Étant donné l'utilisateur Moha qui essaye de se connecter
 Quand Moha saisit une adresse mail erronée
-Alors la connexion de Moha est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors la connexion de Moha est refusée et le message « Veuillez entrer un email valide. » apparaît.
 
 Étant donné l'utilisateur Moha qui essaye de se connecter
 Quand Moha saisit un mot de passe erroné
-Alors la connexion de Moha est refusée et le message "DEMANDER A MOHA" apparaît.
+Alors la connexion de Moha est refusée et le message « Email ou mot de passe invalide " apparaît.
+
+Étant donné l'utilisateur Moha qui essaye de se connecter
+Quand Moha oublie de remplir le champs mot de passe 
+Alors la connexion de Moha est refusée et le message « Veuillez remplir ce champs. " apparaît.
 
 ### Création thème
 
@@ -190,7 +196,7 @@ Alors l'article choisi apparaît
 ### Voter article
 * Voter articles
 
-Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d'antartique" 
+Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d’Antartique" 
 Quand Bettina veut voter pour l'article
 Alors un bouton de "like" lui permet de le faire
 
@@ -205,8 +211,11 @@ Tout au long de la réalisation de notre site, nous avons essayer de le rendre l
 
 Les premières informations qu’il est primordiale de sécurisés sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécurisé les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de donnée le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
 
-Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecter ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. Inversement, un utilisateur connecter ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecté ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. 
 
+Un utilisateur connecté ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
+
+Lors de l’inscription Spring Security authentifie l’utilisateur ainsi cet utilisateur inscrit ne peut accéder ni à la page inscription ni à la page de connexion. Malgré la tentative Spring Security le redirige toujours sur la page d’accueil. 
 
 
 * Connexion	
@@ -220,18 +229,12 @@ Les tests fonctionnels sont un service d’assurance qualité qui consiste à s�
 
 Notre premier test consiste à vérifier que lors d’une inscription ou d’une connexion l’utilisateur est bien redirigé vers la page des thème. Test OK. 
 
-N°	Action à réaliser                         Résultat attendu                         Résultat obtenu 
-
-1	S’inscrire et valider l’inscription       Redirection vers la page des thèmes      A la fin de l’inscription on est bien rediriger          												                                        vers la page des thèmes 
-
-2	Se connecter avec des identifiants valide Redirection vers la page des thèmes      Après avoir saisie des identifiants valide, nous       												                                        sommes bien redirigé vers la page des thèmes
-
-3   Se connecter avec les identifiants       Retourner sami bouhafs à droite du menu   Après s’être connecter avec les identifiants 	de l’utilisateur sami						                                        sami.bouhafs et mot de passe « sa » le prénom
-											                                            affiché est « sami » et le nom « bouhafs » 
-
-4   Cliquer sur le bouton « Déconnexion »    Redirection vers la page de connexion     Aucune redirection effectuer => TEST KO 
-
-5   Cliquer sur le bouton « Ajouter un       Une pop-up apparait                       Lors du clique sur « Ajouter un thème » 
-	thème »	                                                                           une pop-up apparait instantanément 			                                                                
+|N°|Action à réaliser|Résultat attendu|Resultat obtenu|
+|-------|--------------------| ------------------ |:----------------| 
+1|S’inscrire et valider l’inscription |Redirection vers la page des thèmes|      A la fin de l’inscription on est bien rediriger vers la page des thèmes |
+2|	Se connecter avec des identifiants valides | Redirection vers la page des thèmes|Après avoir saisie des identifiants valides, nous sommes bien redirigé vers la page des thèmes|
+3|Se connecter avec les identifiants|Retourner sami bouhafs à droite du menu|   Après s’être connecter avec les identifiants de l’utilisateur sami login sami.bouhafs et mot de passe « sa » le prénom affiché est « sami » et le nom « bouhafs » |
+4|Cliquer sur le bouton « Déconnexion »|Redirection vers la page deconnexion |    Aucune redirection effectuer => TEST KO |
+5|Cliquer sur le bouton « Ajouter un thème »|Une pop-up apparait lors du clique sur « Ajouter un thème|une pop-up apparait instantanément 			                                                                
 											 	 				   
 

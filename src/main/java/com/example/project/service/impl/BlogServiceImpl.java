@@ -92,13 +92,11 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public void supprimerArticle(int id) {
 		articleRepository.delete(id);
-		
 	}
 
 	@Override
 	public void supprimerTheme(int id) {
 		themeRepository.delete(id);
-		
 	}
 
 

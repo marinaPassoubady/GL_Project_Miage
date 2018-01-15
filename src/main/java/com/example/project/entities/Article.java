@@ -14,22 +14,28 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 
 @Entity
+@PropertySource("dateformat.properties")
 public class Article {	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotEmpty(message="Veuillez renseigner un titre !")
+	@NotEmpty(message="Le titre est obligatoire.")
 	private String titre;
 	
 	@Lob
 	@Column(columnDefinition="TEXT")
-	@NotEmpty(message="Veuillez renseigner une description !")
+	@NotEmpty(message="Une description est obligatoire")
 	private String description;
+	
+	@Value("${date.format}")
+	private String dateFormat;
 	
 	private String dateCreation = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	
