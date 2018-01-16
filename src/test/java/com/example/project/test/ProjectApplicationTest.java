@@ -3,7 +3,7 @@ package com.example.project.test;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.project.ProjectApplication;
+import com.parisdescartes.scrib.ProjectApplication;
 
 public class ProjectApplicationTest {
 	

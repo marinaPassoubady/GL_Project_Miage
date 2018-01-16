@@ -11,8 +11,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.example.project.exceptions.ThemeInexistantException;
-import com.example.project.service.BlogService;
+import com.parisdescartes.scrib.controllers.ConsultTheme;
+import com.parisdescartes.scrib.exceptions.ThemeInexistantException;
+import com.parisdescartes.scrib.service.BlogService;
 
 public class ConsultThemeTest {
 	

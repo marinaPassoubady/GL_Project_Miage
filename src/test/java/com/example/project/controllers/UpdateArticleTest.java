@@ -12,10 +12,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.validation.BindingResult;
 
-import com.example.project.entities.User;
-import com.example.project.exceptions.ArticleInexistantException;
-import com.example.project.exceptions.DejaVoteException;
-import com.example.project.service.BlogService;
+import com.parisdescartes.scrib.controllers.UpdateArticle;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.exceptions.ArticleInexistantException;
+import com.parisdescartes.scrib.exceptions.DejaVoteException;
+import com.parisdescartes.scrib.service.BlogService;
 
 public class UpdateArticleTest {
 	

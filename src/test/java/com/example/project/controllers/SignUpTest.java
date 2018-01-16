@@ -16,9 +16,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 
-import com.example.project.entities.User;
-import com.example.project.service.BlogService;
-import com.example.project.validators.UserInscriptionValidator;
+import com.parisdescartes.scrib.controllers.Signup;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.service.BlogService;
+import com.parisdescartes.scrib.validators.UserInscriptionValidator;
 
 @RunWith(SpringRunner.class)
 public class SignUpTest {

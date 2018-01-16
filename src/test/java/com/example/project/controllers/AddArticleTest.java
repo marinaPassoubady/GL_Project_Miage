@@ -12,9 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.validation.BindingResult;
 
-import com.example.project.entities.Article;
-import com.example.project.entities.Theme;
-import com.example.project.service.BlogService;
+import com.parisdescartes.scrib.controllers.AddArticle;
+import com.parisdescartes.scrib.entities.Article;
+import com.parisdescartes.scrib.entities.Theme;
+import com.parisdescartes.scrib.service.BlogService;
 
 public class AddArticleTest {
 	

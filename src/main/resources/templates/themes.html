@@ -59,7 +59,7 @@
   <tbody>
     <tr th:each="t : ${themes}">
   		<td>
-  			<span th:text="${t.getCategorie()}" class="ui olive ribbon label"></span>
+  			<span th:text="${t.getCategorie()}" th:class="${'ui '+t.getCategorieColor()+' ribbon label'}"></span>
   		</td>
       <td>
       	   <img class="ui avatar image" src="assets/avatars/man.png">
@@ -96,8 +96,10 @@
             	<label>Catégorie</label>
 		        <select class="ui fluid dropdown" name="categorie">
 	            <option value="Environnement" selected>Environnement</option>
-	            <option value="Pollution">Pollution</option>
 	            <option value="Humanitaire">Humanitaire</option>
+	            <option value="Politique">Politique</option>
+	            <option value="Diverrtissement">Divertissement</option>
+	            <option value="Artistique">Artistique</option>
 	            <option value="Autre">Autre</option>
 		        </select>
 		      </div>

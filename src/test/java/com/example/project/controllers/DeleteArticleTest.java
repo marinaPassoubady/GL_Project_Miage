@@ -8,7 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.project.service.BlogService;
+import com.parisdescartes.scrib.controllers.DeleteArticle;
+import com.parisdescartes.scrib.service.BlogService;
 
 public class DeleteArticleTest {
 	

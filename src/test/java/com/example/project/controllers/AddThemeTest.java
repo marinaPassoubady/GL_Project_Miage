@@ -12,9 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.validation.BindingResult;
 
-import com.example.project.entities.Theme;
-import com.example.project.entities.User;
-import com.example.project.service.BlogService;
+import com.parisdescartes.scrib.controllers.AddTheme;
+import com.parisdescartes.scrib.entities.Theme;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.service.BlogService;
 
 public class AddThemeTest {
 	

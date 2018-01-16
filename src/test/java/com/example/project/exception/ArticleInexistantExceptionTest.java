@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.project.exceptions.ArticleInexistantException;
+import com.parisdescartes.scrib.exceptions.ArticleInexistantException;
 
 public class ArticleInexistantExceptionTest {
 	
