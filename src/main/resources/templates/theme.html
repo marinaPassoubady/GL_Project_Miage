@@ -43,8 +43,8 @@
    	 	<div class="ui container">
    		<h2 class="ui center aligned icon header">
 		  <i class="comments icon"></i>
-		  <div th:text="${theme.getTitre()}" class="content">
-		  
+		  <div class="content">
+		  Cercle des scribouillards !
 		  </div>
 		</h2>
    		<div class="ui divider"></div>
@@ -53,7 +53,7 @@
       <span th:text="${theme.getAuteur().getPrenom() + ' '+theme.getAuteur().getNom()}" class="ui header"></span>
       <p class="ui sub header" th:text="${theme.getCategorie()}"></p>
         <div class="ui divider"></div>
-		  	<button id="show" class="ui right floated positive basic button">
+		  	<button id="show" class="ui right floated blue button">
 			          Proposer un article
 			</button>
         <p class="ui sub header" th:text="${theme.getTitre()}"></p>
