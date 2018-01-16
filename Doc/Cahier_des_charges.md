@@ -116,15 +116,15 @@ Alors la liste des thèmes disponibles s'affiche
 
 Étant donné l'utilisateur Sami connecté et qu'il n'existe pas de thèmes
 Quand Sami veut créer un thème
-Alors une pop-up apparaît et lui permets de créer un thème
+Alors une fenêtre modale apparaît et lui permets de créer un thème
 
 Étant donné l'utilisateur Sami connecté et qu'il existe des articles dans un thème
 Quand Sami veut créer un article
-Alors une pop-up apparaît et lui permets de créer un article dans un thème
+Alors une fenêtre modale apparaît et lui permets de créer un article dans un thème
 
 Étant donné l'utilisateur Sami connecté et qu'il n'existe pas d'articles dans un thème
 Quand Sami veut créer un article
-Alors une pop-up apparaît et lui permets de créer un article dans un thème
+Alors une fenêtre modale apparaît et lui permets de créer un article dans un thème
 
 
 * Inscription refusée
@@ -235,6 +235,6 @@ Notre premier test consiste à vérifier que lors d’une inscription ou d’une
 2|	Se connecter avec des identifiants valides | Redirection vers la page des thèmes|Après avoir saisie des identifiants valides, nous sommes bien redirigé vers la page des thèmes|
 3|Se connecter avec les identifiants|Retourner sami bouhafs à droite du menu|   Après s’être connecter avec les identifiants de l’utilisateur sami login sami.bouhafs et mot de passe « sa » le prénom affiché est « sami » et le nom « bouhafs » |
 4|Cliquer sur le bouton « Déconnexion »|Redirection vers la page deconnexion |    Aucune redirection effectuer => TEST KO |
-5|Cliquer sur le bouton « Ajouter un thème »|Une pop-up apparait lors du clique sur « Ajouter un thème|une pop-up apparait instantanément 			                                                                
+5|Cliquer sur le bouton « Ajouter un thème »|Une fenêtre modale apparait lors du clique sur « Ajouter un thème|une pop-up apparait instantanément 			                                                                
 											 	 				   
 
