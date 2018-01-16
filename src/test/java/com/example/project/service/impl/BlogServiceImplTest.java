@@ -14,15 +14,16 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.project.entities.Article;
-import com.example.project.entities.Theme;
-import com.example.project.entities.User;
-import com.example.project.exceptions.ArticleInexistantException;
-import com.example.project.exceptions.DejaVoteException;
-import com.example.project.exceptions.ThemeInexistantException;
-import com.example.project.repositories.ArticleRepository;
-import com.example.project.repositories.ThemeRepository;
-import com.example.project.repositories.UserRepository;
+import com.parisdescartes.scrib.entities.Article;
+import com.parisdescartes.scrib.entities.Theme;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.exceptions.ArticleInexistantException;
+import com.parisdescartes.scrib.exceptions.DejaVoteException;
+import com.parisdescartes.scrib.exceptions.ThemeInexistantException;
+import com.parisdescartes.scrib.repositories.ArticleRepository;
+import com.parisdescartes.scrib.repositories.ThemeRepository;
+import com.parisdescartes.scrib.repositories.UserRepository;
+import com.parisdescartes.scrib.service.impl.BlogServiceImpl;
 
 public class BlogServiceImplTest {
 

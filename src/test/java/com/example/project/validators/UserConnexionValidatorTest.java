@@ -9,9 +9,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 
-import com.example.project.entities.User;
-import com.example.project.service.BlogService;
-import com.example.project.validators.UserConnexionValidator;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.service.BlogService;
+import com.parisdescartes.scrib.validators.UserConnexionValidator;
 
 public class UserConnexionValidatorTest {
 	

@@ -16,6 +16,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.AuthenticationException;
 
+import com.parisdescartes.scrib.auth.AuthFailureHandler;
+
 public class AuthFailureHandlerTest {
 	
 	@InjectMocks

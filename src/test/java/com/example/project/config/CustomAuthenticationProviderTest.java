@@ -10,9 +10,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.Authentication;
 
-import com.example.project.entities.User;
-import com.example.project.service.BlogService;
-import com.example.project.validators.UserConnexionValidator;
+import com.parisdescartes.scrib.auth.CustomAuthenticationProvider;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.service.BlogService;
+import com.parisdescartes.scrib.validators.UserConnexionValidator;
 
 public class CustomAuthenticationProviderTest {
 	

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.project.exceptions.ThemeInexistantException;
+import com.parisdescartes.scrib.exceptions.ThemeInexistantException;
 
 public class ThemeInexistantExceptiontTest {
 	

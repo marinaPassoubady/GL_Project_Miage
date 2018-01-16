@@ -21,11 +21,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.project.controllers.Signin;
-import com.example.project.entities.Theme;
-import com.example.project.entities.User;
-import com.example.project.service.BlogService;
-import com.example.project.validators.UserConnexionValidator;
+import com.parisdescartes.scrib.controllers.Signin;
+import com.parisdescartes.scrib.entities.Theme;
+import com.parisdescartes.scrib.entities.User;
+import com.parisdescartes.scrib.service.BlogService;
+import com.parisdescartes.scrib.validators.UserConnexionValidator;
 
 @RunWith(SpringRunner.class)
 public class SignInTest {

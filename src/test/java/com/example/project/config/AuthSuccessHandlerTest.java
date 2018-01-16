@@ -15,7 +15,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.Authentication;
 
-import com.example.project.entities.User;
+import com.parisdescartes.scrib.auth.AuthSuccessHandler;
+import com.parisdescartes.scrib.entities.User;
 
 public class AuthSuccessHandlerTest {
 	
