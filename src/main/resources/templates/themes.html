@@ -45,7 +45,7 @@
 		  </div>
 		</h2>
 		<div class="ui center aligned vertical segment">
-		<div class="ui positive button" id="show">Ajouter un thème</div>
+		<div class="ui teal button" id="show">Ajouter un thème</div>
 		</div>
 	<table class="ui single line table">
   <thead>
@@ -53,12 +53,13 @@
   	<th>Auteur</th>
   	<th>Titre</th>
   	<th>Date de parution</th>
+  	<th>Articles</th>
   	<th></th>
   </thead>
   <tbody>
     <tr th:each="t : ${themes}">
   		<td>
-  			<span th:text="${t.getCategorie()}" class="ui green ribbon label">Environnement</span>
+  			<span th:text="${t.getCategorie()}" class="ui olive ribbon label"></span>
   		</td>
       <td>
       	   <img class="ui avatar image" src="assets/avatars/man.png">
@@ -66,9 +67,13 @@
       </td>
       <td th:text="${t.getTitre()}"></td>
       <td th:text="${t.getDateCreation()}"></td>
+      <td  th:text="${t.getArticles().size()}"></td>
       <td class="right aligned">
-      	      <a th:href="@{'/theme?id='+${t.getId()}}" class="ui button">Détails</a>
+      	      <a th:href="@{'/theme?id='+${t.getId()}}">
+      	      <i class="big teal unhide icon"></i>
+      	      </a>
       </td>
+
     </tr>
   </tbody>
 </table>
@@ -111,13 +116,10 @@
       <i class="checkmark icon"></i>
     </button>
     </div>
-    <div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
+    <div th:if="${param.error}" class="ui left aligned negative message container">
 		<div class="header">
-		 Erreur d'ajout
+		 Erreur d'ajout. Veuillez renseigner tous les champs.
 		</div>
-		<ul>
-		  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-		</ul>
 	</div>
     </form>
   </div>
@@ -135,7 +137,7 @@
     .dropdown();
 
 </script>
-<script th:if="${hasError}" >
+<script th:if="${param.error}" >
 	$('.ui.modal').modal('show');
 </script>
 </div>

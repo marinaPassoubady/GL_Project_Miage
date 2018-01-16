@@ -30,8 +30,7 @@ public class AddArticle {
 	public ModelAndView ajouterArticle(@RequestParam("tId") int id, @ModelAttribute("article") @Valid Article article ,BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(Constante.ERREUR, true);
-			model.setViewName(Constante.THEME);
+			model.setViewName(Constante.THEME_SELECT_ERREUR+id);
 			return model;
 		}
 		article.setAuteur((User)session.getAttribute(Constante.USER));

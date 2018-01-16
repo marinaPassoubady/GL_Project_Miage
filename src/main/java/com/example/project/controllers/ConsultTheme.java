@@ -27,11 +27,21 @@ public class ConsultTheme {
 	//ajouter param date et vote
 	@ModelAttribute
 	@GetMapping(value="theme")
-	public ModelAndView consulterTheme(@RequestParam("id") int id) {
+	public ModelAndView consulterTheme(@RequestParam("id") int id, @RequestParam(value = "date", defaultValue="newest") String date, @RequestParam(value = "voted", defaultValue="most") String voted) {
 		
 		ModelAndView model = new ModelAndView();
 		try {
 			Theme theme = blogService.findTheme(id);
+			if(!Constante.OLDEST.equals(date)) {
+				theme.getArticles().sort((t1, t2) -> {
+					return t2.getId() - t1.getId();
+				});
+			}
+			if(!Constante.LEAST.equals(voted)) {
+				theme.getArticles().sort((t1, t2) -> {
+					return t2.getVotes() - t1.getVotes();
+				});
+			}
 			model.addObject(Constante.THEME, theme);
 			Article article = new Article();
 			model.addObject(Constante.ARTICLE, article);

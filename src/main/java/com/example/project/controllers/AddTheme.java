@@ -27,7 +27,7 @@ public class AddTheme {
 	public ModelAndView ajouterTheme(@Valid Theme theme, BindingResult result) {
 		ModelAndView model = new ModelAndView();
 		if(result.hasErrors()) {
-			model.addObject(Constante.ERREUR, true);
+			model.setViewName(Constante.ACCUEIL_ERREUR);
 			return model;
 		}
 		theme.setAuteur((User)session.getAttribute(Constante.USER));
