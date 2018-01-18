@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
 @Entity
-@PropertySource("dateformat.properties")
 public class Theme {
 	
 	@Id
@@ -38,10 +37,7 @@ public class Theme {
 	private String categorie;
 	private String categorieColor;
 	
-	@Value("${date.format}")
-	private String dateFormat;
-	
-	private String dateCreation = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	private String dateCreation;
 	
 	
 	@OneToMany(mappedBy="theme")

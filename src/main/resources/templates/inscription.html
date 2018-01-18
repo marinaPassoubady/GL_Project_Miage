@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="assets/semantic.css" />
   <script type="text/javascript" src="assets/jquery.js"></script>
   <script type="text/javascript" src="assets/semantic.js"></script>
-
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <style type="text/css">
     body {
       background-color: #DADADA;
@@ -20,7 +20,7 @@
       max-width: 450px;
     }
   </style>
-  <script>
+<!--   <script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -87,7 +87,7 @@
       ;
     })
   ;
-  </script>
+  </script> -->
 </head>
 
 
@@ -130,6 +130,9 @@
             <i class="lock icon"></i>
             <input type="password" name="confirm" placeholder="Confirmer mot de passe" th:field="*{confirm}" />
           </div>
+        </div>
+        <div class="field">
+        <div class="g-recaptcha" data-sitekey="6Lc-MUEUAAAAAKZTF3ZSz3Nyy-4drlOqpQeMDuJ9"></div>
         </div>
         <button type="submit" class="ui fluid large teal button">S'incrire</button>
       </div>

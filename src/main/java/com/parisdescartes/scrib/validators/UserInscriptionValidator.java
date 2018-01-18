@@ -7,13 +7,20 @@ import org.springframework.validation.Validator;
 
 import com.parisdescartes.scrib.entities.User;
 import com.parisdescartes.scrib.service.BlogService;
+import com.parisdescartes.scrib.service.CaptchaService;
 
 
 @Component
 public class UserInscriptionValidator implements Validator {
 	
+	private String captchaIP;
+	private String captchaResponse;
+	
 	@Autowired 
 	BlogService blogService;
+	
+	@Autowired
+	CaptchaService captchaService;
 	
 	@Override
 	public boolean supports(Class<?> c) {
@@ -27,8 +34,20 @@ public class UserInscriptionValidator implements Validator {
 			err.rejectValue("confirm", "password.confirm", "Les mots de passe ne correspondent pas !");
 		}
 			
-		if(blogService.findUserByEmail("mail")!= null) {
+		if(blogService.findUserByEmail(user.getEmail())!= null) {
 			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
 		}
+		if(!captchaService.verifyCaptcha(captchaIP, captchaResponse)) {
+			err.rejectValue("captcha", "verify.error", "La vérification Captcha a échoué. Veuillez réessayer !");			
+		}
 	}
+	
+	public void setCaptchaIP(String captchaIP) {
+		this.captchaIP = captchaIP;
+	}
+	
+	public void setCaptchaResponse(String captchaResponse) {
+		this.captchaResponse = captchaResponse;
+	}
+	
 }

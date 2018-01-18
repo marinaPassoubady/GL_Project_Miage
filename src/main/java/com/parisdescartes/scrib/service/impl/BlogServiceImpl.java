@@ -1,5 +1,7 @@
 package com.parisdescartes.scrib.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,13 @@ public class BlogServiceImpl implements BlogService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	@Autowired
+	SimpleDateFormat dateFormat;
+	
 	@Override
 	public User addUser(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setDateInscription(dateFormat.format(new Date()));
 		return userRepository.save(user);
 	}
 
@@ -44,6 +50,7 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public void addTheme(Theme theme) {
+		theme.setDateCreation(dateFormat.format(new Date()));
 		themeRepository.save(theme);
 		
 	}
@@ -72,6 +79,7 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public void addArticle(Article article) {
+		article.setDateCreation(dateFormat.format(new Date()));
 		articleRepository.save(article);
 	}
 

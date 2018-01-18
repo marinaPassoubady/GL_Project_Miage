@@ -12,6 +12,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
@@ -19,12 +20,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
-@PropertySource("dateformat.properties")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -37,20 +36,19 @@ public class User implements Serializable {
 	private String prenom;
 	
 	@NotEmpty(message="Veuillez renseigner un email !")
-	@Email(message="Un emai est obligatoire.")
 	private String email;
 	
 	@NotEmpty(message="Un mot de passe est obligatoire.")
 	private String password;
 	
-	@Value("${dateformat}")
-	private String dateFormat;
-	
 	@Transient
 	@NotEmpty(message="La confirmation du mot de passe est nécessaire.")
 	private String confirm;
-	String dateInscription =  new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-
+	private String dateInscription;
+	
+	@Transient
+	private String captcha;
+	
 	public int getId() {
 		return id;
 	}
@@ -113,4 +111,11 @@ public class User implements Serializable {
 		return ((Integer)id).hashCode();
 	}
 	
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
+	
+	public String getCaptcha() {
+		return captcha;
+	}
 }

@@ -19,7 +19,6 @@ import org.springframework.context.annotation.PropertySource;
 
 
 @Entity
-@PropertySource("dateformat.properties")
 public class Article {	
 	
 	@Id
@@ -34,10 +33,7 @@ public class Article {
 	@NotEmpty(message="Une description est obligatoire")
 	private String description;
 	
-	@Value("${date.format}")
-	private String dateFormat;
-	
-	private String dateCreation = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	private String dateCreation;
 	
 	@ManyToOne
 	private User auteur;
