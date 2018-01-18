@@ -42,12 +42,14 @@ public class UserInscriptionValidator implements Validator {
 		}
 	}
 	
-	public void setCaptchaIP(String captchaIP) {
+	public UserInscriptionValidator setCaptchaIP(String captchaIP) {
 		this.captchaIP = captchaIP;
+		return this;
 	}
 	
-	public void setCaptchaResponse(String captchaResponse) {
+	public UserInscriptionValidator setCaptchaResponse(String captchaResponse) {
 		this.captchaResponse = captchaResponse;
+		return this;
 	}
 	
 }

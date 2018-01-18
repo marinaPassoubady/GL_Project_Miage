@@ -49,30 +49,35 @@ public class Article {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public Article setId(int id) {
 		this.id = id;
+		return this;
 	}
 	public String getTitre() {
 		return titre;
 	}
-	public void setTitre(String titre) {
+	public Article setTitre(String titre) {
 		this.titre = titre;
+		return this;
 	}
 	public String getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
+	public Article setDescription(String description) {
 		this.description = description;
+		return this;
 	}
 	public String getDateCreation() {
 		return dateCreation;
 	}
-	public void setDateCreation(String dateCreation) {
+	public Article setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
+		return this;
 	}
 	
-	public void setAuteur(User auteur) {
+	public Article setAuteur(User auteur) {
 		this.auteur = auteur;
+		return this;
 	}
 	public User getAuteur() {
 		return auteur;
@@ -82,25 +87,29 @@ public class Article {
 		return theme;
 	}
 	
-	public void setTheme(Theme theme) {
+	public Article setTheme(Theme theme) {
 		this.theme = theme;
+		return this;
 	}
 	
-	public void setVotes(int votes) {
+	public Article setVotes(int votes) {
 		this.votes = votes;
+		return this;
 	}
 	public int getVotes() {
 		return votes;
 	}
-	public void incVotes(int offset) {
+	public Article incVotes(int offset) {
 		votes += offset;
+		return this;
 	}
 	
 	public List<User> getVoteurs() {
 		return voteurs;
 	}
 	
-	public void setVoteurs(List<User> voteurs) {
+	public Article setVoteurs(List<User> voteurs) {
 		this.voteurs = voteurs;
+		return this;
 	}
 }

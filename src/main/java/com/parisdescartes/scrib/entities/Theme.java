@@ -56,26 +56,30 @@ public class Theme {
 	public String getTitre() {
 		return titre;
 	}
-	public void setTitre(String titre) {
+	public Theme setTitre(String titre) {
 		this.titre = titre;
+		return this;
 	}
 	public String getDateCreation() {
 		return dateCreation;
 	}
-	public void setDateCreation(String dateCreation) {
+	public Theme setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
+		return this;
 	}
 	
 	public User getAuteur() {
 		return auteur;
 	}
-	public void setAuteur(User auteur) {
+	public Theme setAuteur(User auteur) {
 		this.auteur = auteur;
+		return this;
 	}
 	
 	
-	public void setDescription(String description) {
+	public Theme setDescription(String description) {
 		this.description = description;
+		return this;
 	}
 	
 	public String getDescription() {
@@ -86,12 +90,14 @@ public class Theme {
 		return categorie;
 	}
 	
-	public void setCategorie(String categorie) {
+	public Theme setCategorie(String categorie) {
 		this.categorie = categorie;
+		return this;
 	}
 
-	public void setArticles(List<Article> articles) {
+	public Theme setArticles(List<Article> articles) {
 		this.articles = articles;
+		return this;
 	}
 	public List<Article> getArticles() {
 		return articles;
@@ -100,7 +106,8 @@ public class Theme {
 	public String getCategorieColor() {
 		return categorieColor;
 	}
-	public void setCategorieColor(String categorieColor) {
+	public Theme setCategorieColor(String categorieColor) {
 		this.categorieColor = categorieColor;
+		return this;
 	}
 }

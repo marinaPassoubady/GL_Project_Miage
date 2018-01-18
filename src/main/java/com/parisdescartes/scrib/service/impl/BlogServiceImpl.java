@@ -38,8 +38,9 @@ public class BlogServiceImpl implements BlogService {
 	
 	@Override
 	public User addUser(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setDateInscription(dateFormat.format(new Date()));
+		user
+		.setPassword(passwordEncoder.encode(user.getPassword()))
+		.setDateInscription(dateFormat.format(new Date()));
 		return userRepository.save(user);
 	}
 

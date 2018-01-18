@@ -30,8 +30,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		String username = auth.getName();
         String password = auth.getCredentials().toString();
         User user = new User();
-        user.setEmail(username);
-        user.setPassword(password);
+        user
+        .setEmail(username)
+        .setPassword(password);
         DataBinder dataBinder = new DataBinder(user);
         dataBinder.setValidator(validator);
         dataBinder.validate();

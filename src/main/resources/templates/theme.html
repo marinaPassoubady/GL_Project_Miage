@@ -42,7 +42,7 @@
    	<div class="ui vertical very padded segment">
    	 	<div class="ui container">
    		<h2 class="ui center aligned icon header">
-		  <i class="comments icon"></i>
+		  <a href="/themes" style="color : black;"><i class="comments icon"></i></a>
 		  <div class="content">
 		  Le Cercle des Scribouillards !
 		  </div>
@@ -92,7 +92,7 @@
   	 <div class="ui vertical  padded segment">
   			<div th:each="article : ${theme.getArticles()}" class="ui raised segment column">
 			<div class="item" th:id="${article.getId()}">
-			 <a th:if="${user.equals(article.getAuteur())}" th:href="@{'/deleteArticle?tId='+${theme.getId()}+'&aId='+${article.getId()}}" class="floating ui circular red label">X</a>
+			 <a th:if="${user.equals(article.getAuteur())}" th:onclick="${'deleteArticle('+theme.getId()+','+article.getId()+')'}" class="floating ui circular red label">X</a>
 		    <div class="content">
 	       	<span class="ui right floated button" th:text="${article.getDateCreation()}"></span>
 		      <a class="ui header" th:text="${article.getTitre()}"></a>
@@ -131,7 +131,7 @@
 
   </div>	
   
-  <div class="ui modal">
+  <div class="ui modal" id="addArticle">
   <i class="close icon"></i>
   <div class="header">
     Ajouter un article
@@ -167,9 +167,34 @@
 </div>
 </div>
 
+<div class="ui mini modal" id="deleteArticle">
+    <i class="close icon"></i>
+    <div class="header">
+      Confirmation de suppression
+    </div>
+    <div class="content">
+      <p>Confirmez-vous la suppression de cet article ?</p>
+    </div>
+    <div class="actions">
+      <div class="ui negative button">
+        Non
+      </div>
+      <a id="deleteOK" href="#" class="ui positive right labeled icon button">
+        Oui
+        <i class="checkmark icon"></i>
+      </a>
+    </div>
+  </div>
+
+
   <script>
+  		function deleteArticle(tId, aId) {
+  			$('#deleteOK').attr("href", "/deleteArticle?tId="+tId+"&aId="+aId);
+  			$('#deleteArticle').modal('show');
+  		}
+  		
 		$('#show').on('click',function() {
-			$('.ui.modal').modal('show');
+			$('#addArticle').modal('show');
 		});
 	  $('.ui.accordion')
 	  .accordion()
@@ -183,7 +208,7 @@
   	
   </script>
   <script th:if="${param.error}" >
-	$('.ui.modal').modal('show');
+	$('#addArticle').modal('show');
 </script>	
 </body>
 </html>

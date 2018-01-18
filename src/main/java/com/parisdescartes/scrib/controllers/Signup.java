@@ -56,9 +56,10 @@ public class Signup {
 	@PostMapping(value="/signup")
 	public String signUpProceed(@Valid User user, @RequestParam("g-recaptcha-response") String captchaResponse, HttpServletRequest request, BindingResult result) {
 		
-		userInscriptionValidator.setCaptchaIP(request.getRemoteAddr());
-		userInscriptionValidator.setCaptchaResponse(captchaResponse);
-		userInscriptionValidator.validate(user, result);
+		userInscriptionValidator
+		.setCaptchaIP(request.getRemoteAddr())
+		.setCaptchaResponse(captchaResponse)
+		.validate(user, result);
 		if(result.hasErrors()) return Constante.INSCRIPTION;
 		user = blogService.addUser(user);
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken

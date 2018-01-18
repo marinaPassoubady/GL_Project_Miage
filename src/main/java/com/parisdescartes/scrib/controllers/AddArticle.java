@@ -33,9 +33,10 @@ public class AddArticle {
 			model.setViewName(Constante.THEME_SELECT_ERREUR+id);
 			return model;
 		}
-		article.setAuteur((User)session.getAttribute(Constante.USER));
-		article.setTheme(new Theme());
-		article.getTheme().setId(id);
+		article
+		.setAuteur((User)session.getAttribute(Constante.USER))
+		.setTheme(new Theme())
+		.getTheme().setId(id);
 		blogService.addArticle(article);
 		model.setViewName(Constante.THEME_SELECT+id);
 		return model;

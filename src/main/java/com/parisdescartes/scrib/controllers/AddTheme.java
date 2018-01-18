@@ -31,8 +31,9 @@ public class AddTheme {
 			model.setViewName(Constante.ACCUEIL_ERREUR);
 			return model;
 		}
-		theme.setAuteur((User)session.getAttribute(Constante.USER));
-		theme.setCategorieColor(Categorie.getCategoryColor(theme.getCategorie()));
+		theme
+		.setAuteur((User)session.getAttribute(Constante.USER))
+		.setCategorieColor(Categorie.getCategoryColor(theme.getCategorie()));
 		blogService.addTheme(theme);
 		model.setViewName(Constante.ACCUEIL);
 		return model;
