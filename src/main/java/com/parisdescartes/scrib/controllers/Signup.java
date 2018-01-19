@@ -8,8 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.parisdescartes.scrib.entities.User;
 import com.parisdescartes.scrib.service.BlogService;
-import com.parisdescartes.scrib.service.CaptchaService;
 import com.parisdescartes.scrib.tools.Constante;
 import com.parisdescartes.scrib.validators.UserInscriptionValidator;
 
@@ -56,10 +53,9 @@ public class Signup {
 	@PostMapping(value="/signup")
 	public String signUpProceed(@Valid User user, @RequestParam("g-recaptcha-response") String captchaResponse, HttpServletRequest request, BindingResult result) {
 		
-		userInscriptionValidator
-		.setCaptchaIP(request.getRemoteAddr())
-		.setCaptchaResponse(captchaResponse)
-		.validate(user, result);
+		userInscriptionValidator.setCaptchaIP(request.getRemoteAddr());
+		userInscriptionValidator.setCaptchaResponse(captchaResponse);
+		userInscriptionValidator.validate(user, result);
 		if(result.hasErrors()) return Constante.INSCRIPTION;
 		user = blogService.addUser(user);
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken

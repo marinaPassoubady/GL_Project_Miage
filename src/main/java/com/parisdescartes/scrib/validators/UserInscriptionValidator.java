@@ -31,14 +31,14 @@ public class UserInscriptionValidator implements Validator {
 	public void validate(Object obj, Errors err) {
 		User user = (User) obj;
 		if(!user.getPassword().equals(user.getConfirm())) {
-			err.rejectValue("confirm", "password.confirm", "Les mots de passe ne correspondent pas !");
+			err.rejectValue("confirm", "password.confirm", "Les mots de passe ne correspondent pas.");
 		}
 			
 		if(blogService.findUserByEmail(user.getEmail())!= null) {
-			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée !");
+			err.rejectValue("email", "email.exists", "L'adresse mail est déjà utilisée.");
 		}
 		if(!captchaService.verifyCaptcha(captchaIP, captchaResponse)) {
-			err.rejectValue("captcha", "verify.error", "La vérification Captcha a échoué. Veuillez réessayer !");			
+			err.rejectValue("captcha", "verify.error", "La vérification Captcha a échoué. Veuillez réessayer.");			
 		}
 	}
 	
