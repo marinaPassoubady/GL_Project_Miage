@@ -2,9 +2,9 @@ package com.parisdescartes.scrib.entities;
 
 
 
-public class Categorie {
+public final class Categorie {
 	
-	public Categorie() {
+	private Categorie() {
 	}
 	
 	private static final String ENVIRONNEMENT = "Environnement";
