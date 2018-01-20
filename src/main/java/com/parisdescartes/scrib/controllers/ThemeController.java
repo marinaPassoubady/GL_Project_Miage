@@ -37,14 +37,14 @@ public class ThemeController {
 		try {
 			Theme theme = blogService.findTheme(id);
 			if(!Constante.OLDEST.equals(date)) {
-				theme.getArticles().sort((t1, t2) -> {
-					return t2.getId() - t1.getId();
-				});
+				theme.getArticles().sort((t1, t2) -> 
+					 t2.getId() - t1.getId()
+				);
 			}
 			if(!Constante.LEAST.equals(voted)) {
-				theme.getArticles().sort((t1, t2) -> {
-					return t2.getVotes() - t1.getVotes();
-				});
+				theme.getArticles().sort((t1, t2) -> 
+					 t2.getVotes() - t1.getVotes()
+				);
 			}
 			model.addObject(Constante.THEME, theme);
 			Article article = new Article();

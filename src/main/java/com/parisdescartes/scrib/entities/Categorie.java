@@ -4,13 +4,15 @@ package com.parisdescartes.scrib.entities;
 
 public class Categorie {
 	
-	private static final String 
-	ENVIRONNEMENT = "Environnement",
-    HUMANITAIRE = "Humanitaire",
-    POLITIQUE  = "Politique",
-    DIVERTISSEMENT = "Divertissement",
-    ARTISTIQUE = "Artistique",
-    AUTRE = "Autre";
+	public Categorie() {
+	}
+	
+	private static final String ENVIRONNEMENT = "Environnement";
+	private static final String  HUMANITAIRE = "Humanitaire";
+	private static final String   POLITIQUE  = "Politique";
+	private static final String  DIVERTISSEMENT = "Divertissement";
+	private static final String   ARTISTIQUE = "Artistique";
+	private static final String  AUTRE = "Autre";
 	
 	public static String getCategoryColor(String c) {
 		switch (c) {
