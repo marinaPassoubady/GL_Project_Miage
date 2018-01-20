@@ -25,3 +25,8 @@ nbdist/
 
 ### fichier à ignorer ###
 .DS_Store
+foo
+/build
+*.py[oc]
+temp*
+!template
