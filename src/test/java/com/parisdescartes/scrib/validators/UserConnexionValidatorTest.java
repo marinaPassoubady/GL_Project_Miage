@@ -43,8 +43,8 @@ public class UserConnexionValidatorTest {
 		
 		uvc.validate(u, br);
 		
-		Mockito.verify(br,Mockito.times(1)).rejectValue("email", "inexists", "Les champs de doivent pas etre vides !");
-		Mockito.verify(br,Mockito.times(1)).rejectValue("password", "inexists", "Les champs de doivent pas etre vides !");
+		Mockito.verify(br,Mockito.times(1)).rejectValue("email", "inexists", "Les champs de doivent pas etre vides.");
+		Mockito.verify(br,Mockito.times(1)).rejectValue("password", "inexists", "Les champs de doivent pas etre vides.");
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class UserConnexionValidatorTest {
 		
 		uvc.validate(u, br);
 		
-		Mockito.verify(br,Mockito.times(1)).rejectValue("email", "email.inexists", "L'email n'existe pas !");
+		Mockito.verify(br,Mockito.times(1)).rejectValue("email", "email.inexists", "L'email saisi n'existe pas.");
 	}
 	
 	@Test
@@ -71,7 +71,7 @@ public class UserConnexionValidatorTest {
 		
 		uvc.validate(u, br);
 		
-		Mockito.verify(br,Mockito.times(1)).rejectValue("password", "password.incorrect","Mot de passe incorrect !");
+		Mockito.verify(br,Mockito.times(1)).rejectValue("password", "password.incorrect","Le mot de passe saisie est incorrect.");
 		
 	}
 }

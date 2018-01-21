@@ -161,7 +161,6 @@ public class BlogServiceImplTest {
 	public void evaluerArticleTest_ThrowDejaVoteException() throws ArticleInexistantException, DejaVoteException {
 		ArrayList<User> list = new ArrayList<User>();
 		
-		//listeVoteurs.add(alex);
 		User u = new User();
 		u.setId(1);
 		
@@ -169,8 +168,6 @@ public class BlogServiceImplTest {
 		Mockito.when(article.getVoteurs()).thenReturn(list);
 		
 		list.add(u);
-		
-		//System.out.println(article.getVoteurs().contains(alex));
 		
 		bsi.evaluerArticle(1, 1, 1);
 	}
