@@ -22,15 +22,15 @@ public class Theme {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotEmpty(message="Veuillez renseigner un titre !")
+	@NotEmpty(message="Un titre est requis.")
 	private String titre;
 	
 	@Lob
 	@Column(columnDefinition="TEXT")
-	@NotEmpty(message="Veuillez renseigner une description !")
+	@NotEmpty(message="La description est requise.")
 	private String description;
 	
-	@NotEmpty(message="Veuillez renseigner une catégorie !")
+	@NotEmpty(message="Une catégorie est requise.")
 	private String categorie;
 	private String categorieColor;
 	

@@ -19,20 +19,20 @@ public class User implements Serializable {
 	private int id;
 	
 	
-	@NotEmpty(message="Veuillez renseigner un nom !")
+	@NotEmpty(message="Votre nom est requis.")
 	private String nom;
 	
-	@NotEmpty(message="Veuillez renseigner un prénom !")
+	@NotEmpty(message="Votre prénom est requis.")
 	private String prenom;
 	
-	@NotEmpty(message="Veuillez renseigner un email !")
+	@NotEmpty(message="Un email est requis")
 	private String email;
 	
-	@NotEmpty(message="Un mot de passe est obligatoire.")
+	@NotEmpty(message="Un mot de passe est requis.")
 	private String password;
 	
 	@Transient
-	@NotEmpty(message="La confirmation du mot de passe est nécessaire.")
+	@NotEmpty(message="La confirmation du mot de passe est requise.")
 	private String confirm;
 	private String dateInscription;
 	

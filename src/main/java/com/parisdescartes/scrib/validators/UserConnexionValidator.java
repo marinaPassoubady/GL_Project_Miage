@@ -31,20 +31,20 @@ public class UserConnexionValidator implements Validator{
 		User user = (User) obj;		
 		if(user.getEmail().equals("") || user.getPassword().equals("")) {
 		 if(user.getEmail().equals("")) {
-			 err.rejectValue("email", "inexists","Les champs de doivent pas etre vides !");
+			 err.rejectValue("email", "inexists","Les champs de doivent pas etre vides.");
 		 }
 		 if(user.getPassword().equals("")) {
-			 err.rejectValue("password", "inexists","Les champs de doivent pas etre vides !");
+			 err.rejectValue("password", "inexists","Les champs de doivent pas etre vides.");
 		 }
 		}
 		else {
 			finalUser = blogService.findUserByEmail(user.getEmail());
 			if(finalUser == null ) {
-				err.rejectValue("email", "email.inexists","L'email n'existe pas !");
+				err.rejectValue("email", "email.inexists","L'email saisi n'existe pas.");
 			}
 			else {
 				if(!passwordEncoder.matches(user.getPassword(), finalUser.getPassword())) {
-					err.rejectValue("password", "password.incorrect","Mot de passe incorrect !");
+					err.rejectValue("password", "password.incorrect","Le mot de passe saisie est incorrect.");
 				}
 			}
 	
