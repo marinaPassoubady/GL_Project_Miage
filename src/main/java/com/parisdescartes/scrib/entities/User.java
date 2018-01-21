@@ -1,22 +1,12 @@
 package com.parisdescartes.scrib.entities;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity

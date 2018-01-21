@@ -15,10 +15,10 @@ import com.parisdescartes.scrib.service.CaptchaService;
 public class CaptchaServiceImp implements CaptchaService {
 
 	 @Value("${google.recaptcha.key.secret}") 
-	 String recaptchaSecret;
+	 private String recaptchaSecret;
 	 
 	 @Value("${captcha.verify.url}")
-	 String CAPTCHA_VERIFY_URL;
+	 private String captchaVerifyUrl;
 	 
 	 @Autowired
 	 RestTemplateBuilder restTemplateBuilder;
@@ -31,7 +31,7 @@ public class CaptchaServiceImp implements CaptchaService {
 	    body.put("remoteip", ip);
 	    ResponseEntity<Map> recaptchaResponseEntity = 
 	    	      restTemplateBuilder.build()
-	    	        .postForEntity(CAPTCHA_VERIFY_URL+
+	    	        .postForEntity(captchaVerifyUrl+
 	    	          "?secret={secret}&response={response}&remoteip={remoteip}", 
 	    	          body, Map.class, body);
 	    return (Boolean)recaptchaResponseEntity.getBody().get("success");
