@@ -13,7 +13,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.validation.BindingResult;
 
 import com.parisdescartes.scrib.controllers.ThemeController;
-import com.parisdescartes.scrib.entities.Categorie;
 import com.parisdescartes.scrib.entities.Theme;
 import com.parisdescartes.scrib.entities.User;
 import com.parisdescartes.scrib.exceptions.ThemeInexistantException;

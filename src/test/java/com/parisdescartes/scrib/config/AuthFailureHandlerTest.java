@@ -1,7 +1,5 @@
 package com.parisdescartes.scrib.config;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;

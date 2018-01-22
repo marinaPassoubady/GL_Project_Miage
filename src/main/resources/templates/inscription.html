@@ -20,7 +20,7 @@
       max-width: 450px;
     }
   </style>
-<!--   <script>
+<script>
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -87,7 +87,7 @@
       ;
     })
   ;
-  </script> -->
+  </script>
 </head>
 
 
@@ -132,9 +132,9 @@
           </div>
         </div>
         <div class="field">
-        <div class="g-recaptcha" data-sitekey="6Lc-MUEUAAAAAKZTF3ZSz3Nyy-4drlOqpQeMDuJ9"></div>
+        <div class="g-recaptcha" data-callback="activate" data-sitekey="6Lc-MUEUAAAAAKZTF3ZSz3Nyy-4drlOqpQeMDuJ9"></div>
         </div>
-        <button type="submit" class="ui fluid large teal button">S'incrire</button>
+        <button id="submit" type="submit" class="ui fluid large teal button" disabled>S'incrire</button>
       </div>
 
 	<div th:if="${#fields.hasErrors('*')}" class="ui left aligned negative message container">
@@ -153,7 +153,11 @@
   </div>
 </div>
 
-    
+<script>
+function activate(){
+	$('#submit').attr('disabled',false);
+}
+</script>    
 
 </body>
 
