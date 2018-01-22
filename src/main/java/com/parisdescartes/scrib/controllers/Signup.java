@@ -51,8 +51,7 @@ public class Signup {
 	}
 	
 	@PostMapping(value="/signup")
-	public String signUpProceed(@Valid User user, @RequestParam("g-recaptcha-response") String captchaResponse, HttpServletRequest request, BindingResult result) {
-		
+	public String signUpProceed(@Valid User user, BindingResult result, @RequestParam("g-recaptcha-response") String captchaResponse, HttpServletRequest request) {		
 		userInscriptionValidator.setCaptchaIP(request.getRemoteAddr());
 		userInscriptionValidator.setCaptchaResponse(captchaResponse);
 		userInscriptionValidator.validate(user, result);
