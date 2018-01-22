@@ -24,7 +24,7 @@ Notre site "Le cercle des Scribouillards" reprends grossièrement le principe du
 
 
 ### La particularité du site
-Les articles peuvent être votés. Le thème est cloturé automatiquement au bout d'un certain délai, passé ce délai, c'est l'article qui a le plus vote qui l'emporte. 
+Les articles peuvent être votés. Le thème est clôturé automatiquement au bout d'un certain délai, passé ce délai, c'est l'article qui a le plus vote qui l'emporte. 
 
 Ainsi nous laissons libre pouvoir aux utilisateurs du site de produire gérer les thèmes et articles. D'autres fonctionnalités supplémentaires peuvent être ajoutés aux services proposés par le site. 
 
@@ -84,7 +84,7 @@ Nous disposons d'une séance commune de 3h30 par semaine. Ce temps est consacré
 ---
 # Délais et parties prenantes 
 ## Le délais
-Le projet est à rendre pour fin janvier. Nous disposons ainsi 3 mois pour réaliser notre application et préparer la soutenance.
+Le projet est à rendre le 23 janvier. Nous disposons ainsi 3 mois pour réaliser notre application et préparer la soutenance.
 
 Afin d'anticiper une baisse d'activité durant la fin décembre - début janvier, nous avancerons un maximum sur le développement de l'application. Durant cette période critique, il sera plus facile d'avancer sur la documentation (nécessite moins de communication ni prise de décision commune). 
 
@@ -193,10 +193,9 @@ Alors un formulaire s'affiche et lui permet de le faire
 Quand Marina veut consulter un article
 Alors l'article choisi apparaît
 
-### Voter article
+### Voter articles
 * Voter articles
-
-Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d’Antartique" 
+Étant donné l'utilisateur Bettina connecté qui apprécie l'article "les pingouins d’Antarctique" 
 Quand Bettina veut voter pour l'article
 Alors un bouton de "like" lui permet de le faire
 
@@ -205,17 +204,17 @@ Alors un bouton de "like" lui permet de le faire
 ### Sécurités
 
 La sécurité des sites Web exige de la vigilance dans tous les aspects de sa conception et de son utilisation. 
-Il vaut mieux déceler cette faille avant qu’un cybercriminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
+Il vaut mieux déceler cette faille avant qu’un cyber criminel ne le fasse. Un contrôle de sécurité d’un site Web est pour cette raison la première chose à faire pour assurer la sécurité de votre activité en ligne et de vos données.
 
 Tout au long de la réalisation de notre site, nous avons essayer de le rendre le plus sécurisé possible pour assurer aux utilisateurs un site de confiance où leurs informations seront protégées. 
 
-Les premières informations qu’il est primordiale de sécurisés sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécurisé les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de donnée le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
+Les premières informations qu’il est primordiale de sécuriser sont les identifiants. En effet, lorsqu’une personne possède vos identifiants, elle a la possibilité de poster des contenu illicite. Pour sécuriser les identifiants, nous avons utilisé une clé de cryptage qui permet de crypté le mot de passe; dans la base de données le mot de passe apparait crypté. Lors de la saisie du mot de passe, nous avons également fait en sorte d’afficher des étoiles pour chaque caractère saisie. 
 
 Les identifiants de connexion sont d’autant plus important car nous avons fais en sortes qu’un utilisateur non connecté ne peut pas accéder à la page des thèmes même s’il tape l’URL de la page des thèmes; il est redirigé vers la page de connexion. 
 
 Un utilisateur connecté ne peut pas retourner à la page de connexion même s’il passe par l’URL de connexion, il est automatiquement redirigé vers la page des thèmes. 
 
-Lors de l’inscription Spring Security authentifie l’utilisateur ainsi cet utilisateur inscrit ne peut accéder ni à la page inscription ni à la page de connexion. Malgré la tentative Spring Security le redirige toujours sur la page d’accueil. 
+Lors de l’inscription Spring Security authentifie l’utilisateur ainsi cet utilisateur inscrit ne peut accéder ni à la page d'inscription ni à la page de connexion. Malgré la tentative Spring Security le redirige toujours sur la page d’accueil. 
 
 
 * Connexion	
@@ -234,7 +233,7 @@ Notre premier test consiste à vérifier que lors d’une inscription ou d’une
 1|S’inscrire et valider l’inscription |Redirection vers la page des thèmes|      A la fin de l’inscription on est bien rediriger vers la page des thèmes |
 2|	Se connecter avec des identifiants valides | Redirection vers la page des thèmes|Après avoir saisie des identifiants valides, nous sommes bien redirigé vers la page des thèmes|
 3|Se connecter avec les identifiants|Retourner sami bouhafs à droite du menu|   Après s’être connecter avec les identifiants de l’utilisateur sami login sami.bouhafs et mot de passe « sa » le prénom affiché est « sami » et le nom « bouhafs » |
-4|Cliquer sur le bouton « Déconnexion »|Redirection vers la page deconnexion |    Aucune redirection effectuer => TEST KO |
+4|Cliquer sur le bouton « Déconnexion »|Redirection vers la page déconnexion |    Aucune redirection effectuer => TEST KO |
 5|Cliquer sur le bouton « Ajouter un thème »|Une fenêtre modale apparait lors du clique sur « Ajouter un thème|une pop-up apparait instantanément 			                                                                
 											 	 				   
 

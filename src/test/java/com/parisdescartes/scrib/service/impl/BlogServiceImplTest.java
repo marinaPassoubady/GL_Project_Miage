@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.parisdescartes.scrib.entities.Article;
@@ -94,9 +92,7 @@ public class BlogServiceImplTest {
 	
 	//@Test
 	public void addUserTest() {
-		Mockito.when(dateFormat.format(new Date())).thenReturn("date");
 		User u = new User();
-		//Mockito.when(user.setDateInscription(dateFormat.format(new Date()))).thenReturn(user);
 		assertEquals(u,bsi.addUser(alex));
 	}
 	
@@ -161,7 +157,6 @@ public class BlogServiceImplTest {
 	public void evaluerArticleTest_ThrowDejaVoteException() throws ArticleInexistantException, DejaVoteException {
 		ArrayList<User> list = new ArrayList<User>();
 		
-		//listeVoteurs.add(alex);
 		User u = new User();
 		u.setId(1);
 		
@@ -169,8 +164,6 @@ public class BlogServiceImplTest {
 		Mockito.when(article.getVoteurs()).thenReturn(list);
 		
 		list.add(u);
-		
-		//System.out.println(article.getVoteurs().contains(alex));
 		
 		bsi.evaluerArticle(1, 1, 1);
 	}
