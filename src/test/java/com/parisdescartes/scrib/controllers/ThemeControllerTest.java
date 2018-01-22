@@ -33,12 +33,6 @@ public class ThemeControllerTest {
 	@Mock
 	private HttpSession session;
 	
-	@Mock
-	private Categorie cat;
-	
-	//@Mock
-	//private Theme theme;
-	
 	@Before 
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);

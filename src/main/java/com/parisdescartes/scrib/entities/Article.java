@@ -22,12 +22,12 @@ public class Article {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotEmpty(message="Le titre est obligatoire.")
+	@NotEmpty(message="Un titre est requis.")
 	private String titre;
 	
 	@Lob
 	@Column(columnDefinition="TEXT")
-	@NotEmpty(message="Une description est obligatoire")
+	@NotEmpty(message="Une description est requise.")
 	private String description;
 	
 	private String dateCreation;
