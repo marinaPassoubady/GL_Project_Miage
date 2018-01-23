@@ -74,13 +74,13 @@ public class SignUpTest {
 	@Test
 	public void signUpProceedTest_ErrorInfosUser() {
 		Mockito.when(br.hasErrors()).thenReturn(true);
-		assertEquals("inscription",signupcontroller.signUpProceed(u,"dd",request,br));
+		assertEquals("inscription",signupcontroller.signUpProceed(u,br,"dd",request));
 	}
 	
 	@Test
 	public void signUpProceedTest_NoErrorInfosUser() {
 		Mockito.when(br.hasErrors()).thenReturn(false);
-		assertEquals("redirect:themes",signupcontroller.signUpProceed(u,"dd",request,br));
+		assertEquals("redirect:themes",signupcontroller.signUpProceed(u,br,"dd",request));
 		
 	}
 	
